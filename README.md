@@ -1,3 +1,6 @@
-#Extreme Wordle game
+#Extreme Wordle Game
+
 Khwashaba Ndeme
+Kiviet Simbongile
+Themba Mtshelwane
 Nhlamulo Khosa
