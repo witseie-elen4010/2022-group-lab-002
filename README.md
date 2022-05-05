@@ -1,7 +1,7 @@
 #Extreme Wordle Game
 
-Khwashaba Ndeme
-Kiviet Simbongile
-Themba Mtshelwane
-Nhlamulo Khosa
+Khwashaba Ndeme <br />
+Kiviet Simbongile <br />
+Themba Mtshelwane <br />
+Nhlamulo Khosa <br />
 Mandla Khumalo
