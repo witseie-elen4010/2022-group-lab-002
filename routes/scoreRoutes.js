@@ -2,7 +2,7 @@
 const path = require('path')
 const express = require('express')
 const router = express.Router()
-const classList = require('../modules/scoreData')
+
 
 
 router.get('/', function (req, res) {
