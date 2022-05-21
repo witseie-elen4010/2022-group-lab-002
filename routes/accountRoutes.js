@@ -25,7 +25,7 @@ router.get('/api/info', function(req, res){
 //routes for POST requests 
 router.post('/api/register', function(req,res){
     console.log(`added player info: username ${req.body.username} password ${req.body.password} email ${req.body.email}`)
-    const exist=userData.alreadyExists(req.body.email)
+    const exist=userData.alreadyExists(req.body.email, req.body.username)
      console.log(`Register ${exist}`)
 
 if(!exist)
@@ -44,7 +44,6 @@ else{
    // res.send("<div align ='center'><h2>Email already used</h2></div>")
      res.redirect(req.baseUrl +'/login')
 }
-//     res.redirect(req.baseUrl)
 
 
 })

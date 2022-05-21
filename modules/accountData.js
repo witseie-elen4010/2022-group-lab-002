@@ -8,9 +8,9 @@ add: function(player)
     Players.push(player)    
     },
 
-alreadyExists: function(email){
+alreadyExists: function(email, username){
     
-    return Players.find((elem)=>email===elem.email)
+    return Players.find((elem)=>email===elem.email ||username===elem.username)
 
 },
 
