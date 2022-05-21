@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({ extened: true }))
 
 app.use('/', mainRouter)
 app.use('/account',accountRouter)
+app.use('/cdn', express.static('public')) // mounts the public directory to /cdn 
+
 const port = process.env.PORT || 3000
 app.listen(port)
 console.log('Express server running on port', port)

@@ -14,9 +14,9 @@ alreadyExists: function(email){
 
 },
 
-verify: function(player)
+verify: function(username,password)
 {
-    return Players.find((elem)=>player.email===elem.email && player.password===elem.password && player.username===elem.username)
+    return Players.find((elem)=>username===elem.username && password===elem.password)
 },
     getData: function(){
         return Players

@@ -38,11 +38,10 @@ if(!exist)
         userData.add(player)
         console.log('users',userData.getData())
         res.send("<div align ='center'><h2>Registration successful</h2></div> <br><br><div align ='center'><a href='/account/login'>Login</a></div>")
-    // res.redirect(req.baseUrl)
 
 }
 else{
-    res.send("<div align ='center'><h2>Email already used</h2></div>")
+   // res.send("<div align ='center'><h2>Email already used</h2></div>")
      res.redirect(req.baseUrl +'/login')
 }
 //     res.redirect(req.baseUrl)
@@ -52,19 +51,14 @@ else{
 
 router.post('/api/login', function(req, res){
 
-   console.log(`login credentials : username ${req.body.username} password ${req.body.password} email ${req.body.email}`)
-   
-   const player= {
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email
-    }
+   console.log(`login credentials :  usernamer ${req.body.password} email ${req.body.username}`)
+  
 
-   const exist=userData.verify(player)
+   const exist=userData.verify(req.body.username, req.body.password)
    console.log(`Login ${exist}`)
 
    if(exist){
-    res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${player.username}</h3></div><br><br><div align='center'><a href='account/'>logout</a></div>`);
+    res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${req.body.username}</h3></div><br><br><div align='center'><a href='/account/'>logout</a></div>`);
   
    }
    else{
