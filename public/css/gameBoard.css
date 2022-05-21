@@ -65,3 +65,19 @@ hr{
     cursor: pointer;
     user-select:none;
 }
+
+
+.correct{
+    background-color: green;
+    color:  white;
+}
+
+.present{
+    background-color: yellow;
+    color:  white;
+}
+
+.absent{
+    background-color:rgb(47, 45, 45);
+    color:  white;
+}
