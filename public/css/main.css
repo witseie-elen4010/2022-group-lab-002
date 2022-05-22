@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-color: white;
 }
 
 .popup{
@@ -29,4 +29,8 @@ body{
     cursor: pointer;
 
     
+}
+
+#links{
+text-decoration: none;
 }
