@@ -15,9 +15,17 @@ button.addEventListener('click', function () {
 }, false)
 
 
-function gameData (a, b) {
-  return a + b
-}
+fetch('/gameScores/api/list')
+  .then(function (response) {
+    if (response.ok) { return response.json() } // Return the response parse as JSON
+    else { throw 'Failed to load gameScores: response code invalid!' }
+})
+.then(function (data) {
+  data = tries.slice()
+})
+.catch(function (e) { 
+    alert(e) 
+  })
 
 function gameScore () {
   return tries.reduce((accumulator, currentValue) => accumulator + currentValue)
