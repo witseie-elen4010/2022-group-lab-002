@@ -6,6 +6,7 @@ const userData = require("../modules/accountData");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+
 router.get("/register", function (req, res) {
   res.render("register");
 });
@@ -66,7 +67,8 @@ router.post("/api/login", async function (req, res) {
     const matches = await bcrypt.compare(playerPass, hashedPassword);
     if (matches) {
       req.flash("success", "Login successful");
-      res.redirect( "/game"); //this will be directed to the game page
+      res.sendFile(path.join(__dirname, '../views/gameBoard.html'))//this will be directed to the game page
+
     } else {
       req.flash("error", "password does not match, try again");
       res.redirect(req.baseUrl + "/login");
