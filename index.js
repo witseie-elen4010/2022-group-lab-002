@@ -33,7 +33,10 @@ app.use(flash());
 app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter);
-app.use("/game", gameRouter);
+
+app.use('/instructions', instructionsRoute)
+app.use('/game', gameRouter)
+app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 

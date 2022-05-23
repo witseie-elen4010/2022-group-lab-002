@@ -12988,6 +12988,8 @@ function chooseWord () {
 const targetWord = chooseWord().toUpperCase()
 console.log(targetWord)
 let guessedWord = ''
+let gameOver = false
+
 
 window.onload = function () {
   initializeGrid()
@@ -13049,6 +13051,7 @@ function submitGuess (keyEvent) {
 }
 
 document.addEventListener('keyup', (keyEvent) => {
+  if (gameOver) return
   // Press Letters
   enterLetter(keyEvent)
   // Press Backspace
@@ -13134,5 +13137,23 @@ function update () {
       // No in the word
       currentTile.classList.add('absent')
     }
+  }
+  winConditions(correctLetterCount, currentAttempt)
+}
+
+// ****************** WINNING CONDITIONS **********************
+
+function winConditions (count, attempts) {
+  // Win Condition
+  if (count === COLUMNS) {
+    alert('YOU WIN')
+    gameOver = true
+    return gameOver
+  }
+  // Lose condition
+  if((attempts+1) === ROWS){
+    alert(`The correct word is ${targetWord}`)
+    gameOver = true
+    return gameOver
   }
 }
