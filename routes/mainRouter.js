@@ -5,6 +5,6 @@ const mainRouter = express.Router();
 
 mainRouter.get("/", function (req, res) {
   res.render("home");
-});
+}); 
 
 module.exports = mainRouter;

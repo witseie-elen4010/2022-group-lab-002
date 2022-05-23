@@ -55,23 +55,3 @@ button:hover span{
 button:hover{
     border:none;
 }
-/* .navbar{
-    height: 60px;
-    margin: auto;
-    padding: 35px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color:rgb(73, 72, 72)
-}
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    position: relative
-}
-.navbar ul li a{
-    text-decoration: none;
-    color:#fff;
-    text-transform:uppercase;
-} */
