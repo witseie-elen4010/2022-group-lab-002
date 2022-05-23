@@ -17,10 +17,5 @@ router.get('/api/get/:id', function (req, res) {
   res.json(classList.get(req.params.id)) // Notice the wildcard in the URL?
   // Try browsing to /api/get/0 once you've added some entries
 })
-// routes for POST requests
-router.post('/api/create', function (req, res) {
-  console.log('Adding the following player:', req.body.player)
-  classList.add(req.body.player)
-  res.redirect(req.baseUrl)
-})
+
 module.exports = router
