@@ -19,8 +19,8 @@ router.get('/api/get/:id', function (req, res) {
 })
 // routes for POST requests
 router.post('/api/create', function (req, res) {
-  console.log('Adding the following student:', req.body.student)
-  classList.add(req.body.student)
+  console.log('Adding the following player:', req.body.player)
+  classList.add(req.body.player)
   res.redirect(req.baseUrl)
 })
 module.exports = router
