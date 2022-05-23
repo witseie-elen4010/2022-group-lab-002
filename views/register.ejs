@@ -15,7 +15,7 @@
   </head>
   <body>
     <% if(successFlashMessage){ %>
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show">
       <button
         type="button"
         class="close"
@@ -27,7 +27,7 @@
       <%- successFlashMessage %>
     </div>
     <% } %> <% if(errorFlashMessage){ %>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger alert-dismissible fade show">
       <button
         type="button"
         class="close"

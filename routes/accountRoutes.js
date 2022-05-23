@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 const path = require("path");
 const express = require("express");
 const router = express.Router();
@@ -60,13 +60,13 @@ router.post("/api/login", async function (req, res) {
   console.log(hashedPassword);
 
   //search the user by username first
-  const usernameFound =userData.verify(req.body.username);
-  console.log('username exist',usernameFound);
+  const usernameFound = userData.verify(req.body.username);
+  console.log("username exist", usernameFound);
   if (usernameFound) {
     const matches = await bcrypt.compare(playerPass, hashedPassword);
     if (matches) {
       req.flash("success", "Login successful");
-      res.redirect(req.baseUrl + "/login");
+      res.redirect(req.baseUrl + "/login"); //this will be directed to the game page
     } else {
       req.flash("error", "password does not match, try again");
       res.redirect(req.baseUrl + "/login");
@@ -75,7 +75,6 @@ router.post("/api/login", async function (req, res) {
     req.flash("error", "Account does not exist, register instead");
     res.redirect(req.baseUrl + "/register");
   }
-
 });
 
 module.exports = router;

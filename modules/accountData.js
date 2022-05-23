@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 const { use } = require("bcrypt/promises");
 

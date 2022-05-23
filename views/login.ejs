@@ -15,14 +15,14 @@
   </head>
   <body>
     <% if(successFlashMessage){ %>
-      <div class="alert alert-success">
+      <div class="alert alert-success alert-dismissible fade show">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <%- successFlashMessage %>
       </div>
       <% } %>
       
       <% if(errorFlashMessage){ %>
-      <div class="alert alert-danger">
+      <div class="alert alert-danger alert-dismissible fade show">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <%- errorFlashMessage %>
       </div>
