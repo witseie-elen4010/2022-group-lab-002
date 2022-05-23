@@ -13005,7 +13005,8 @@ function initializeGrid () {
         document.getElementById('board').appendChild(tile)
       }
     }
-  }
+}
+
   //* ************ User Keyboard inputs **********************
   //Physical keyboard
 function enterLetter (keyEvent) {
@@ -13104,12 +13105,6 @@ function clickDelete(){
 
 }
 
-function stopInteraction () {
-  document.removeEventListener('click', handleMouseClick)
-}
-
-
-
 function update () {
   correctLetterCount = 0
 
@@ -13125,9 +13120,7 @@ function update () {
   correctLetterCount = 0
 
   for (let c = 0; c < COLUMNS; c++) {
-    const currentTile = document.getElementById(
-      currentAttempt.toString() + '-' + c.toString()
-    )
+    const currentTile = document.getElementById(currentAttempt.toString() + '-' + c.toString())
     const letter = currentTile.innerText
 
     // is the letter in the correct position
