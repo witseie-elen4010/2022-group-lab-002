@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extreme Wordle</title>
 
-    <link rel="stylesheet" href="/public/css/gameBoard.css">
-    <link rel="stylesheet" href="/public/css/instructions.css">
+    <link rel="stylesheet" href="/cdn/css/gameBoard.css">
+    <link rel="stylesheet" href="/cdn/css/instructions.css">
 
  </head>
  <body>
@@ -71,9 +71,17 @@
                   
            </div>
            <div class="examples">
-               <p id="correct">The letter <strong>W</strong> is in the word and in the correct spot.</p>
-               <p id="present">The letter <strong>I</strong> is in the word but in the wrong spot.</p>
-               <p id="absent">The letter <strong>U</strong> is not in the word in any spot.</p>
+            <p id="correct">For Example <strong style="background-color:green; font-weight: 1.2;">S</strong> 
+               <strong style="background-color:yellow; font-weight: 1.2;">C</strong>
+               <strong style="background-color:gray; font-weight: 1.2;">A</strong>
+               <strong style="background-color:gray; font-weight: 1.2;">R</strong>
+               <strong style="background-color:gray; font-weight: 1.2;">Y</strong>            
+            
+            </p>
+
+               <p id="correct">The letter <strong style="background-color:green; font-weight: 1.2;">S</strong> is in the word and in the correct spot.</p>
+               <p id="present">The letter <strong style="background-color:yellow; font-weight: 1.2;">C</strong> is in the word but in the wrong spot.</p>
+               <p id="absent">The letter <strong style="background-color:gray; font-weight: 1.2;">A</strong>  is not in the word in any spot.</p>
            </div>
            <div class="note">
                <p> A new WORDLE will be available each day!</p>
@@ -84,5 +92,5 @@
    <div id="overlay"></div>
 
  </body>
- <script src="/public/scripts/gameBoard.js"></script>
+ <script src="/cdn/scripts/gameBoard.js"></script>
 </html>

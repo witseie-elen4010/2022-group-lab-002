@@ -34,11 +34,9 @@ app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter);
 
-app.use('/instructions', instructionsRoute)
 app.use('/game', gameRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
-app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 const port = process.env.PORT || 3000;
 app.listen(port);
