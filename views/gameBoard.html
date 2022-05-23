@@ -7,13 +7,16 @@
     <title>Extreme Wordle</title>
 
     <link rel="stylesheet" href="/public/css/gameBoard.css">
-    <script src="/public/scripts/gameBoard.js"></script>
+    <link rel="stylesheet" href="/public/css/instructions.css">
+
  </head>
  <body>
     <h1>Wordle</h1>
     <hr>
     <br>
+    
     <div data-guess-grid id="board"></div>
+
     <div id="vKeyboard" class="virtualKeyboard">
     <button class="key" data-key="Q"> Q</button>
     <button class="key" data-key="W"> W</button>
@@ -50,5 +53,36 @@
     <button class="key" data-key="Q"> Q</button>
     <button data-delete class="key"> Del</button>
    </div>
+
+
+   <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="modal-title">How To Play</div>
+        <button data-close-button class="close-button">&times;</button>
+     </div>
+      
+     <div class="modal-body">
+           <div class="rules">
+               <p>Guess the WORDLE in six tries. <br><br>
+
+                   Each guess must be a valid five-letter word. Hit the enter button to submit. <br><br>
+                   
+                   After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+                  
+           </div>
+           <div class="examples">
+               <p id="correct">The letter <strong>W</strong> is in the word and in the correct spot.</p>
+               <p id="present">The letter <strong>I</strong> is in the word but in the wrong spot.</p>
+               <p id="absent">The letter <strong>U</strong> is not in the word in any spot.</p>
+           </div>
+           <div class="note">
+               <p> A new WORDLE will be available each day!</p>
+           </div>
+       </div>
+
+   </div> 
+   <div id="overlay"></div>
+
  </body>
+ <script src="/public/scripts/gameBoard.js"></script>
 </html>

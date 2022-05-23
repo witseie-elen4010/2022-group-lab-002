@@ -1,5 +1,10 @@
 'use strict'
 
+const openModalButtons = document.querySelectorAll('[data-modal-target]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')
+const overlay = document.getElementById('overlay')
+
+
 const ROWS = 6
 const COLUMNS = 5
 
@@ -12986,13 +12991,14 @@ function chooseWord () {
   return dictionary[index]
 }
 const targetWord = chooseWord().toUpperCase()
-console.log(targetWord)
+
 let guessedWord = ''
 let gameOver = false
 
 
 window.onload = function () {
   initializeGrid()
+  modal.classList.add('active')
 }
 
 //* ************ Game BOARD **********************
@@ -13062,6 +13068,7 @@ document.addEventListener('keyup', (keyEvent) => {
 
   //Virtual keyboard
 startInteraction()
+
 function startInteraction () {
   document.addEventListener("click", handleMouseClick)
 }
@@ -13089,14 +13096,22 @@ function clickLetter(keyEvent){
   if (currentTile.innerText === '') {
       currentTile.innerText = keyEvent.toLowerCase()
       currentTile.textContent = keyEvent
+      guessedWord = guessedWord + `${keyEvent.toLowerCase()}`
       letterPosition++
   }}
 }
 
 function clickEnter(){
-  update()
-  currentAttempt++
-  letterPosition = 0
+  if(dictionary.includes(guessedWord.toLowerCase() )){
+    update()
+    currentAttempt++
+    letterPosition = 0
+    letterPosition = 0
+    guessedWord = []
+  
+  }else{
+alert(`${guessedWord} is invalid. Try again`)
+}
 }
 
 function clickDelete(){
@@ -13104,6 +13119,7 @@ function clickDelete(){
     letterPosition -= 1
     const currentTile = document.getElementById(currentAttempt.toString() + '-' + letterPosition.toString() )
     currentTile.innerText = ''
+    guessedWord=guessedWord.slice(0,-1)
   }
 
 }
@@ -13156,4 +13172,27 @@ function winConditions (count, attempts) {
     gameOver = true
     return gameOver
   }
+}
+
+
+overlay.addEventListener('click', () => {
+  const modals = document.querySelectorAll('.modal.active')
+  modals.forEach((modal) => {
+    closeModal(modal)
+  })
+})
+
+overlay.classList.add('active')
+
+closeModalButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal')
+    closeModal(modal)
+  })
+})
+
+function closeModal (modal) {
+  if (modal == null) return
+  modal.classList.remove('active')
+  overlay.classList.remove('active')
 }
