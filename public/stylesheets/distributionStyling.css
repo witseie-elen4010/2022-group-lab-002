@@ -1,0 +1,16 @@
+.myProgress {
+    width: 60%;
+    background-color: white;
+    }
+    
+  .myBar {
+      width: 10%;
+      height: 20px;
+      background-color: #04AA6D;
+      text-align: right;
+      line-height: 20px;
+      color: white;
+      display: flex;
+      font-weight: bold;
+      color: var(--tile-text-color);
+    }
