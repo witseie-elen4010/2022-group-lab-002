@@ -4,8 +4,7 @@ const express = require("express");
 const mainRouter = express.Router();
 
 mainRouter.get("/", function (req, res) {
-  //res.sendFile(path.join(__dirname, "../views/home.html"));
-res.render('home')
+  res.render("home");
 });
 
 module.exports = mainRouter;

@@ -3,6 +3,9 @@ const path = require("path");
 const express = require("express");
 const router = express.Router();
 const userData = require("../modules/accountData");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 router.get("/", function (req, res) {
   res.render("home");
 });
@@ -23,45 +26,59 @@ router.get("/api/info", function (req, res) {
 
 //routes for POST requests
 router.post("/api/register", function (req, res) {
-  console.log(
-    `added player info: username ${req.body.username} password ${req.body.password} email ${req.body.email}`
-  );
-  const exist = userData.alreadyExists(req.body.email, req.body.username);
-  console.log(`Register ${exist}`);
 
-  if (!exist) {
-    const player = {
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-    };
-    userData.add(player);
-    console.log("users", userData.getData());
-    req.flash('success', 'Registration successful, Login to your account');
-    res.redirect(req.baseUrl + "/login");
+  const player = {
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+  };
+ 
+  //hash player password
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    bcrypt.hash(player.password, salt, (err, hash) => {
+      if(err) throw err;
+      player.password = hash;
+      console.log(
+        `added player info: username ${req.body.username} password ${player.password} email ${req.body.email}`
+      );
+       const exist = userData.alreadyExists(player.email,player.username);
+      console.log(`Register ${exist}`);
     
-  } else {
-    // res.send("<div align ='center'><h2>Email already used</h2></div>")
-    req.flash('error', 'Account already exist, Login to your account'); 
-    res.redirect(req.baseUrl + "/login");
-  }
+      if (!exist) {
+        userData.add(player);
+        console.log("users", userData.getData());
+        req.flash("success", "Registration successful, Login to your account");
+        res.redirect(req.baseUrl + "/login");
+      } else {
+        req.flash("error", "Account already exist, Login to your account");
+        res.redirect(req.baseUrl + "/login");
+      }
+    });
+  });
+ 
 });
 
 router.post("/api/login", function (req, res) {
-  console.log(
-    `login credentials :  usernamer ${req.body.password} email ${req.body.username}`
-  );
+ 
+let playerPass = req.body.password;
+const password=userData.getPassword(req.body.username)
 
-  const exist = userData.verify(req.body.username, req.body.password);
-  console.log(`Login ${exist}`);
+console.log(password)
 
-  if (exist) {
-    req.flash('success', 'Login successful');
-    res.redirect(req.baseUrl+"/register")
-  } else {
-    req.flash('error', 'Account does not exist, register instead'); 
+bcrypt.compare(playerPass,password, (err,isMatch)=>
+{
+  if(err) throw err;
+  
+  if(isMatch)
+  {
+    req.flash("success", "Login successful");
+        res.redirect(req.baseUrl + "/register");
+  }
+  else {
+    req.flash("error", "Account does not exist, register instead");
     res.redirect(req.baseUrl + "/register");
   }
+})  
 });
 
 module.exports = router;

@@ -11,6 +11,7 @@ const flashMessages = require("./modules/flashMessages")
 // loading boadyParser
 const bodyParser = require("body-parser");
 
+
 app.set('view engine', 'ejs')
 app.use(expressEjsLayout)
 //use bodyParser for JSON and URL encoded form bodies
