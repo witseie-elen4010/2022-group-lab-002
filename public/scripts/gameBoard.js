@@ -9,7 +9,6 @@ let correctLetterCount = 0
 
 window.onload = function () {
   initializeGrid()
-  initializeVirtualKeyBoard()
 }
 
 //* ************ Game BOARD **********************
@@ -27,13 +26,11 @@ function initializeGrid () {
   }
 
   //* ************ User Keyboard inputs **********************
+  //Physical keyboard
 function enterLetter (keyEvent) {
-
     if (keyEvent.code >= 'KeyA' && keyEvent.code <= 'KeyZ') {
     if (letterPosition < COLUMNS) {
-      const currentTile = document.getElementById(
-        currentAttempt.toString() + '-' + letterPosition.toString()
-      )
+      const currentTile = document.getElementById(currentAttempt.toString() + '-' + letterPosition.toString() )
       if (currentTile.innerText === '') {
         currentTile.innerText = keyEvent.code[3]
         letterPosition++
@@ -53,7 +50,7 @@ function deleteLetter (keyEvent) {
 }
 
 function submitGuess (keyEvent) {
-  if (keyEvent.code === 'Enter') {
+  if (keyEvent.code === 'Enter' ) {
         update()
         currentAttempt++
         letterPosition = 0
@@ -69,6 +66,59 @@ document.addEventListener('keyup', (keyEvent) => {
   submitGuess(keyEvent)
 })
 
+  //Virtual keyboard
+startInteraction()
+function startInteraction () {
+  document.addEventListener("click", handleMouseClick)
+}
+
+function handleMouseClick (e) {
+  if (e.target.matches('[data-key]')) {
+    clickLetter(e.target.dataset.key)
+    return
+  }
+  if (e.target.matches('[data-enter]')) {
+    clickEnter()
+    return
+  }
+  if (e.target.matches('[data-delete]')) {
+     clickDelete()
+    return
+  } 
+}
+
+const onGrid = document.querySelector("[data-guess-grid]")
+
+function clickLetter(keyEvent){
+  const currentTile = document.getElementById(currentAttempt.toString() + '-' + letterPosition.toString())
+  if (letterPosition < COLUMNS) {
+  if (currentTile.innerText === '') {
+      currentTile.innerText = keyEvent.toLowerCase()
+      currentTile.textContent = keyEvent
+      letterPosition++
+  }}
+}
+
+function clickEnter(){
+  update()
+  currentAttempt++
+  letterPosition = 0
+}
+
+function clickDelete(){
+  if (letterPosition > 0 && letterPosition <= COLUMNS) {
+    letterPosition -= 1
+    const currentTile = document.getElementById(currentAttempt.toString() + '-' + letterPosition.toString() )
+    currentTile.innerText = ''
+  }
+
+}
+
+function stopInteraction () {
+  document.removeEventListener('click', handleMouseClick)
+}
+
+
 
 function update () {
   correctLetterCount = 0
@@ -79,3 +129,4 @@ function update () {
     )
     const letter = currentTile.innerText}
 }
+
