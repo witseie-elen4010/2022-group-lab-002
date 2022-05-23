@@ -1,5 +1,7 @@
 "use strict";
 
+const { use } = require("bcrypt/promises");
+
 const Players = [];
 
 module.exports = {
@@ -14,20 +16,24 @@ module.exports = {
     return foundAccount1.length > 0;
   },
 
-  verify: function (username, password) {
-    const foundAccount = Players.find(
-      (elem) => username === elem.username && password === elem.password
+  verify: function (username) {
+    const foundAccount = Players.filter(
+      (elem) => username === elem.username //&& password === elem.password
     );
-    return !!(
-      foundAccount.username === username && foundAccount.password === password
-    );
+    return foundAccount.length>0;
   },
   getData: function () {
     return Players;
   },
   getPassword: function (username) {
-    const filteredPlayer = Players.find((elem) => username === elem.username);
+    if(this.verify(username))
+    {
+      const filteredPlayer = Players.find((elem) => username === elem.username);
 
     return filteredPlayer.password;
+    }
+    else{
+      return "";
+    }
   },
 };

@@ -33,7 +33,7 @@ describe("player login details are correct", () => {
       username: "Mulow",
       password: "1234#Mulow",
     };
-    expect(PlayersAccount.verify(player.username, player.password)).toEqual(
+    expect(PlayersAccount.verify(player.username)).toEqual(
       true
     );
   });
