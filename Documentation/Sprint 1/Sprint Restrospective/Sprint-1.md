@@ -4,6 +4,7 @@
 * Rushing into stories
 * Falling behind with the course content
 * Starting the sprint late
+* Procrastination
 
 ## Start doing
 * Taking sometime to understand the project before coming up with stories
@@ -18,6 +19,7 @@
 ## Continue doing
 * Having regular short form meetings (Scrums)
 * Having the goal of having a quality product of the Extreme Wordle game
+* Being Active in group discussions
 
 ## Sprint velocity
 5
