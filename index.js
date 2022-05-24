@@ -39,7 +39,7 @@ app.use('/game', gameRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/settings",settingsRouter)
-app.use("/cdn", express.static("public"));
+
 
 const port = process.env.PORT || 3000;
 app.listen(port);
