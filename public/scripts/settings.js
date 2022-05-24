@@ -1,9 +1,11 @@
 function changeColor(Color) {
     if (Color === 'white') {
         document.getElementById("body").className = "white";
-      } else if  (Color === 'dark') {
-        document.getElementById("body").className = "dark";
-      } else {
-        document.getElementById("body").className = "blue";
+      }
+      if (Color === 'black') {
+        document.getElementById("body").className = "black";
+      } 
+      if (Color === 'grey') {
+        document.getElementById("body").className = "grey";
       }
   }
