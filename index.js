@@ -7,6 +7,7 @@ const cookiePaser = require("cookie-parser");
 const expressEjsLayout = require("express-ejs-layouts");
 const mainRouter = require("./routes/mainRouter.js");
 const accountRouter = require("./routes/accountRoutes.js");
+const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 // loading boadyParser
@@ -33,7 +34,7 @@ app.use(flash());
 app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter);
-
+app.use('/gameScores', scoreRouter)
 app.use('/game', gameRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
