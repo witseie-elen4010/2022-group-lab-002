@@ -1,0 +1,85 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: gainsboro;
+}
+
+hr{
+    width: 500px;
+}
+
+#title{
+    font-size: 36px;
+    font-weight:  bold;
+    letter-spacing: 2px;
+}
+
+#board{
+    width: 200px;
+    height: 10px;
+    margin: 0 auto;
+    margin-top: 3px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile{
+
+    /*Box*/
+    border: 2px solid gainsboro;
+    width: 30px;
+    height: 30px;
+    margin: 2.5px;
+
+    
+    /*Text*/
+    color: gainsboro;
+    font-size:16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.virtualKeyboard{
+    padding: 250px 100px;
+    display: grid;
+    grid-template-columns: repeat(20, minmax(auto, 1.25em));
+    grid-auto-rows: 3rem;
+    gap: .25em;
+    justify-content: center;
+}
+.key{
+    font-size: inherit;
+    grid-column: span 2;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    color: white;
+    fill: white;
+    text-transform: uppercase;
+    border-radius: .25em;
+    cursor: pointer;
+    user-select:none;
+}
+
+
+.correct{
+    background-color: green;
+    color:  white;
+}
+
+.present{
+    background-color: yellow;
+    color:  white;
+}
+
+.absent{
+    background-color:rgb(47, 45, 45);
+    color:  white;
+}
+
+
