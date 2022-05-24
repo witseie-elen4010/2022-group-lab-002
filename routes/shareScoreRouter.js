@@ -4,7 +4,7 @@ const path = require('path')
 const express = require('express')
 const shareScoreRouter = express.Router()
 
-gameRouter.get('/', (req, res) => {
+shareScoreRouter.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/share.html'))
 })
 
