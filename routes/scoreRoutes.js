@@ -6,7 +6,7 @@ const classList = require('../modules/scoreData')
 
 
 router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/gameScores/score.html'))
+    res.sendFile(path.join(__dirname, '../views/score.html'))
 })
 
 // RESTful api
