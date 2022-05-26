@@ -15,6 +15,11 @@ router.get("/login", function (req, res) {
   res.render("login");
 });
 
+router.get("/logout",function(req,res){
+  req.logout();
+  res.redirect("/")
+})
+
 //RESTful api
 
 router.get("/api/info", function (req, res) {
@@ -87,5 +92,4 @@ router.post("/api/login", async function (req, res) {
     res.redirect(req.baseUrl + "/register");
   }
 });
-
 module.exports = router;
