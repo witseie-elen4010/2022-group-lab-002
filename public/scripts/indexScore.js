@@ -1,6 +1,6 @@
 'use strict'
 
-const tries = [ 3, 0, 0, 0, 1, 0 ]
+const tries = [ ]
 let button = document.getElementById('student')
 let scoreValue = document.getElementById('scoreValue')
 let distributions = document.getElementById('guess-distribution')
