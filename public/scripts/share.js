@@ -9,6 +9,8 @@ console.log(pageUrl) // Reference of PC
 
 const score = ` Ndeme ${0}`
 
+const gameName = 'Extreme Worlde Game Score Board: '
+
 const numberOfWins = 0
 const numberOfWinsText = `The Player Won: ${numberOfWins}`
 
@@ -18,7 +20,7 @@ const numberOfTriesText = `Player's Attempts: ${numberOfWins}`
 const totalScore = 0
 const totalScoreText = `Player's Total Score: ${numberOfWins}`
 
-const message = `${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n`
+const message = ` ${gameName} \n ${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n Link: \n ${pageUrl}`
 
 telegram.addEventListener('click', () => {
   console.log('twitter button clicked')
