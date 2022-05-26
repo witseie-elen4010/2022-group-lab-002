@@ -9,6 +9,10 @@ router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../views/score.html'))
 })
 
+router.get('/share', function (req, res) {
+  res.render('share')
+})
+
 // RESTful api
 router.get('/api/list', function (req, res) {
   res.json(classList.getData()) // Respond with JSON
