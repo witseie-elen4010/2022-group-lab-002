@@ -7,10 +7,13 @@ const cookiePaser = require("cookie-parser");
 const expressEjsLayout = require("express-ejs-layouts");
 const mainRouter = require("./routes/mainRouter.js");
 const accountRouter = require("./routes/accountRoutes.js");
+const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
+const shareScoreRouter=require("./routes/shareScoreRouter.js")
 // loading boadyParser
 const bodyParser = require("body-parser");
+const settingsRouter = require('./routes/settingsRouter.js') 
 
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -33,9 +36,12 @@ app.use(flash());
 app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter);
-
+app.use('/gameScores', scoreRouter)
 app.use('/game', gameRouter)
+app.use('/share',shareScoreRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
+
+app.use("/settings",settingsRouter)
 
 
 const port = process.env.PORT || 3000;

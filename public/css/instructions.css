@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: rgb(23, 21, 21);
+}
+
 .modal{
     position: fixed;
     top: 50%;
@@ -24,12 +28,10 @@
     display:  flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid  white;
 }
 
 .modal-title{
-    font-size:  1.25rem;
-    font-weight: bold;
+    border-bottom: 1px solid gainsboro;
 }
 
 .closeButton{
@@ -39,7 +41,7 @@
     background: none;
     font-size:  1.25rem;
     font-weight: bold;
-    color:  white;
+    color: gainsboro;
 }
 
 .modal-body{
@@ -47,11 +49,11 @@
 }
 
 .rules{
-    border-bottom: 1px solid  white;
+    border-bottom: 1px solid gainsboro;
 }
 
 .examples{
-    border-bottom: 1px solid  white;
+    border-bottom: 1px solid gainsboro;
 }
 
 #overlay{
@@ -62,6 +64,7 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
+    background-color: rgb(12, 12, 12, 0.5);
 }
 
 #overlay.active{

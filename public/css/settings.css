@@ -1,0 +1,12 @@
+.white{
+    background:white;
+    color:black;
+}
+.black{
+    background:black;
+    color:white;
+}
+.grey{
+    background:grey;
+    color:white;
+}
