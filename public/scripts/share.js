@@ -3,22 +3,27 @@
 const twitter = document.getElementById('twitter')
 const telegram = document.getElementById('telegram')
 const whatsapp = document.getElementById('whatsapp')
-
+const showScore = document.getElementById('showScore')
 const pageUrl = location.href
 console.log(pageUrl) // Reference of PC
 
-const score = ` Ndeme ${0}`
 
 const numberOfWins = 0
 const numberOfWinsText = `The Player Won: ${numberOfWins}`
 
 const numberOfTries = 0
-const numberOfTriesText = `Player's Attempts: ${numberOfWins}`
+const numberOfTriesText = `Player's Attempts: ${numberOfTries}`
 
 const totalScore = 0
-const totalScoreText = `Player's Total Score: ${numberOfWins}`
+const totalScoreText = `Player's Total Score: ${totalScore}`
 
-const message = `${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n`
+const scoreBoard = ` ${gameName} \n ${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n Link: \n ${pageUrl}`
+let message = scoreBoard
+
+showScore.addEventListener('click', () =>{
+  console.log('showScore button clicked')
+  message = scoreBoard
+})
 
 telegram.addEventListener('click', () => {
   console.log('twitter button clicked')
