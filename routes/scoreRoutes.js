@@ -2,24 +2,48 @@
 const path = require('path')
 const express = require('express')
 const router = express.Router()
-const classList = require('../modules/scoreData')
+const gameScores = require('../modules/scoreData')
 
-
-router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/score.html'))
-})
 
 router.get('/share', function (req, res) {
   res.render('share')
 })
 
-// RESTful api
-router.get('/api/list', function (req, res) {
-  res.json(classList.getData()) // Respond with JSON
+router.get('/', async function (req, res) {
+  try{
+    const subscribers = await gameScores.find()
+    res.json(subscribers)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+  
 })
-router.get('/api/get/:id', function (req, res) {
-  res.json(classList.get(req.params.id)) // Notice the wildcard in the URL?
-  // Try browsing to /api/get/0 once you've added some entries
+
+router.post('/', async (req, res) => {
+
+  const playerScores = new gameScores ({
+    username: req.body.username,
+    playerTries: req.body.playerTries,
+    playerScore: req.body.playerScore
+  })
+  try{
+    const playerData = await playerScores.save()
+    res.status(201).json(playerData)
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
 })
+
+router.get('/api/username', async (req, res) => {
+  const getUser = await gameScores.find()
+  res.json(getScore) // Respond with JSON
+})
+
+
+router.patch('/:id', async (req, res) => {
+  res.json(gameScores.get(req.params.id))
+
+})
+
 
 module.exports = router
