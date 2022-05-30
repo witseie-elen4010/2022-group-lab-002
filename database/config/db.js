@@ -1,12 +1,12 @@
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv').config()
 const mongoose = require('mongoose')
-
+const uriString= process.env.ATLAS_URI;
 const connectDb = async () =>{
     try{
-        const conn= await mongoose.connect(process.env.ATLAS_URI)
+        const conn= await mongoose.connect(uriString)
 
         console.log('MongoDB Connected: ${conn.connection.host')
+        console.log(uriString)
     }
     catch (error){
         console.log(error)
