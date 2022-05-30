@@ -6,7 +6,7 @@ const whatsapp = document.getElementById('whatsapp')
 
 const invitation = document.getElementById('invitation')
 
-const pageUrl = location.href // Responsible for saving the current page to the pageUrl
+const pageUrl = new URL('https://extremewordle.azurewebsites.net')
 
 const gameName = 'Extreme Worlde Game Score Board: '
 
