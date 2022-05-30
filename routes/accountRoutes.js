@@ -1,11 +1,11 @@
-'use strict'
+"use strict";
 const path = require("path");
 const express = require("express");
 const router = express.Router();
-const userData = require("../modules/accountData");
+const userData = require("../modules/accountData.js");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-
+const players = require("../modules/players");
 
 router.get("/register", function (req, res) {
   res.render("register");
@@ -15,6 +15,11 @@ router.get("/login", function (req, res) {
   res.render("login");
 });
 
+router.get("/logout",function(req,res){
+  req.logout();
+  res.redirect("/")
+})
+
 //RESTful api
 
 router.get("/api/info", function (req, res) {
@@ -22,61 +27,69 @@ router.get("/api/info", function (req, res) {
 });
 
 //routes for POST requests
-router.post("/api/register", function (req, res) {
-  const player = {
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-  };
+router.post("/api/register", async function (req, res) {
+  /***************************** */
 
-  //hash player password
-  bcrypt.genSalt(saltRounds, (err, salt) => {
-    bcrypt.hash(player.password, salt, (err, hash) => {
-      if (err) throw err;
-      player.password = hash;
-      console.log(
-        `added player info: username ${req.body.username} password ${player.password} email ${req.body.email}`
-      );
-      const exist = userData.alreadyExists(player.email, player.username);
-      console.log(`Register ${exist}`);
+  const username = req.body.username;
+  const password = req.body.password;
+  const email = req.body.email;
 
-      if (!exist) {
-        userData.add(player);
-        console.log("users", userData.getData());
-        req.flash("success", "Registration successful, Login to your account");
-        res.redirect(req.baseUrl + "/login");
-      } else {
-        req.flash("error", "Account already exist, Login to your account");
-        res.redirect(req.baseUrl + "/register");
-      }
-    });
+  //check if account already exists
+  const playerExits = await players.findOne({ email });
+  const usernameExist= await players.findOne({username});
+  if (playerExits || username) {
+    req.flash("error", "Account already exist, Login to your account");
+    res.status(400).redirect(req.baseUrl + "/login");
+  }
+else{
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const player = await players.create({
+    username,
+    email,
+    password: hashedPassword,
   });
+  if (player) {
+    console.log({
+      _id: players.id,
+      username: players.username,
+      email: players.email,
+    });
+
+    req.flash("success", "Registration successful, Login to your account");
+    res.redirect(req.baseUrl + "/login");
+  }
+   else {
+    // res.status(400);
+    req.flash("error", "Account already exist, Login to your account");
+    res.redirect(req.baseUrl + "/login");
+  }
+}
 });
 
 //route for login POST request
 router.post("/api/login", async function (req, res) {
-  let playerPass = req.body.password;
-  const hashedPassword = userData.getPassword(req.body.username);
+  const username = req.body.username;
+  const password = req.body.password;
 
-  console.log(hashedPassword);
+  //check if username exists
+  const player = await players.findOne({ username });
 
-  //search the user by username first
-  const usernameFound = userData.verify(req.body.username);
-  console.log("username exist", usernameFound);
-  if (usernameFound) {
-    const matches = await bcrypt.compare(playerPass, hashedPassword);
-    if (matches) {
+  if (player) {
+    const pass = await bcrypt.compare(password, player.password);
+
+    if (pass) {
       req.flash("success", "Login successful");
-      res.sendFile(path.join(__dirname, '../views/gameBoard.html'))//this will be directed to the game page
-
+      res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
     } else {
-      req.flash("error", "password does not match, try again");
+      req.flash("error", "password does not match");
       res.redirect(req.baseUrl + "/login");
     }
   } else {
-    req.flash("error", "Account does not exist, register instead");
+    req.flash("error", "account does not exists, please register");
+    //res.status(400);
     res.redirect(req.baseUrl + "/register");
   }
 });
-
 module.exports = router;

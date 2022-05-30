@@ -4,20 +4,21 @@ const twitter = document.getElementById('twitter')
 const telegram = document.getElementById('telegram')
 const whatsapp = document.getElementById('whatsapp')
 
-const pageUrl = location.href //Responsible for saving the current page to the pageUrl
+const pageUrl = location.href
+console.log(pageUrl) // Reference of PC
 
-const gameName = 'Extreme Worlde Game Score Board: '
+const score = ` Ndeme ${0}`
 
 const numberOfWins = 0
 const numberOfWinsText = `The Player Won: ${numberOfWins}`
 
 const numberOfTries = 0
-const numberOfTriesText = `Player's Attempts: ${numberOfTries}`
+const numberOfTriesText = `Player's Attempts: ${numberOfWins}`
 
 const totalScore = 0
-const totalScoreText = `Player's Total Score: ${totalScore}`
+const totalScoreText = `Player's Total Score: ${numberOfWins}`
 
-const message = ` ${gameName} \n ${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n Link: \n ${pageUrl}`
+const message = `${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n`
 
 telegram.addEventListener('click', () => {
   console.log('twitter button clicked')
