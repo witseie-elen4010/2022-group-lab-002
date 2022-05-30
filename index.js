@@ -11,11 +11,10 @@ const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
-const connectDb = require('./database/config/db')
 // loading boadyParser
 const bodyParser = require("body-parser");
 const settingsRouter = require('./routes/settingsRouter.js') 
-connectDb()
+
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
 //use bodyParser for JSON and URL encoded form bodies
