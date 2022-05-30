@@ -4,7 +4,7 @@ const twitter = document.getElementById('twitter')
 const telegram = document.getElementById('telegram')
 const whatsapp = document.getElementById('whatsapp')
 
-const pageUrl = location.href //Responsible for saving the current page to the pageUrl
+const pageUrl = new URL('https://extremewordle.azurewebsites.net') //Responsible for saving the current page to the pageUrl
 
 const gameName = 'Extreme Worlde Game Score Board: '
 
