@@ -9,3 +9,9 @@ function changeColor(Color) {
         document.getElementById("body").className = "grey";
       }
   }
+  const settings = document.getElementsByClassName('contentBx')
+  for (i = 0; i < settings.length; i++) {
+    settings[i].addEventListener('click', function () {
+      this.classList.toggle('active')
+    })
+  }

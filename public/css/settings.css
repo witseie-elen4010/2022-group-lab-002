@@ -1,12 +1,43 @@
-.white{
-    background:white;
-    color:black;
+.accordian .contentBx .label::before{
+    content:'+';
+    position: absolute;
+    top: 118px;
+    right: 75px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
 }
-.black{
-    background:black;
-    color:white;
+
+.accordian .contentBx .content{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    overflow-y: auto; 
 }
-.grey{
-    background:grey;
-    color:white;
+
+.accordian .contentBx.active .content{
+    height: 150px;
 }
+
+.accordian .contentBx.active .label::before{
+    content:'-';
+}
+
+nav {
+    border: 1px solid ;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+  }
+  .white{
+      background:white;
+      color:black;
+  }
+  .black{
+      background:black;
+      color:white;
+  }
+  .grey{
+      background:grey;
+      color:white;
+  }
