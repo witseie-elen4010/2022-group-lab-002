@@ -1,6 +1,9 @@
-const dotenv = require('dotenv').config()
+const path = require("path");
+const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 const mongoose = require('mongoose')
 const uriString= process.env.ATLAS_URI;
+console.log('here...', path.resolve(__dirname, '../../.env'), uriString)
+
 const connectDb = async () =>{
     try{
         const conn= await mongoose.connect(uriString)
