@@ -26,4 +26,4 @@ const store = new MongoDBSession(
       collection: "playerSessions", 
     }
 )
-module.exports = {connectDb, store}
+module.exports = {connectDb, store,session}

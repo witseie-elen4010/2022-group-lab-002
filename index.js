@@ -1,7 +1,7 @@
 "use strict";
 const express = require("express");
 const app = express();
-const session = require("express-session");
+//const session = require("express-session");
 const flash = require("connect-flash");
 const cookiePaser = require("cookie-parser");
 const expressEjsLayout = require("express-ejs-layouts");
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extened: true }));
 
 app.use(cookiePaser("nhlamulo21"));
 app.use(
-  session({
+  connectDb.session({
     secret: "nhlamulo21",
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, //delete cookie after 1 day
     saveUninitialized: false,
