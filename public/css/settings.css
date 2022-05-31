@@ -29,15 +29,15 @@ nav {
     padding-bottom: 50px;
     padding-left: 80px;
   }
-  .white{
-      background:white;
-      color:black;
-  }
-  .black{
-      background:black;
-      color:white;
-  }
-  .grey{
-      background:grey;
-      color:white;
-  }
+body.white{
+    background:white;
+    color:black;
+}
+body.black{
+    background:black;
+    color:white;
+}
+body.grey{
+    background:grey;
+    color:white;
+}
