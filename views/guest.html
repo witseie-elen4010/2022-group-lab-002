@@ -5,33 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extreme Wordle</title>
+
     <link rel="stylesheet" href="/cdn/css/gameBoard.css">
     <link rel="stylesheet" href="/cdn/css/instructions.css">
-    <link rel="stylesheet" href="/cdn/css/settings.css">
-    <script src="/cdn/scripts/class/index.js"></script>
 
  </head>
  <body>
     <h1>Wordle</h1>
-   <form action="api/logout" method="post">
-   <button>Logout </button>
-   </form>
     <hr>
     <br>
-    <div class="accordian">
-      <div class="contentBx">
-          <div style="text-align:right" class="label">Settings</div> 
-          <div class="content">
-              <nav class="boarder">
-                  <h1>Theme
-                      <button onclick="changeColor('white')">white</button>
-                      <button onclick="changeColor('black')">Dark</button>
-                      <button onclick="changeColor('grey')">grey</button>
-                  </h1>
-              </nav>
-          </div>
-      </div>
-  </div>
+    
     <div data-guess-grid id="board"></div>
 
     <div id="vKeyboard" class="virtualKeyboard">
@@ -108,7 +91,5 @@
    <div id="overlay"></div>
 
  </body>
- <script src="/cdn/scripts/settings.js"></script>
  <script src="/cdn/scripts/gameBoard.js"></script>
-
 </html>
