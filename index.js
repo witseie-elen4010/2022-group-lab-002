@@ -1,7 +1,6 @@
 "use strict";
 const express = require("express");
 const app = express();
-//const session = require("express-session");
 const flash = require("connect-flash");
 const cookiePaser = require("cookie-parser");
 const expressEjsLayout = require("express-ejs-layouts");
