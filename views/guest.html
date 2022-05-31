@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extreme Wordle</title>
+
+    <link rel="stylesheet" href="/cdn/css/gameBoard.css">
+    <link rel="stylesheet" href="/cdn/css/instructions.css">
+
+ </head>
+ <body>
+    <h1>Wordle</h1>
+    <hr>
+    <br>
+    
+    <div data-guess-grid id="board"></div>
+
+    <div id="vKeyboard" class="virtualKeyboard">
+    <button class="key" data-key="Q"> Q</button>
+    <button class="key" data-key="W"> W</button>
+    <button class="key" data-key="E"> E</button>
+    <button class="key" data-key="R"> R</button>
+    <button class="key" data-key="T"> T</button>
+    <button class="key" data-key="Y"> Y</button>
+    <button class="key" data-key="U"> U</button>
+    <button class="key" data-key="I"> I</button>
+    <button class="key" data-key="O"> O</button>
+    <button class="key" data-key="P"> P</button>
+    <div class="space"></div>
+
+    <button class="key" data-key="A"> A</button>
+    <button class="key" data-key="S"> S</button>
+    <button class="key" data-key="D"> D</button>
+    <button class="key" data-key="F"> F</button>
+    <button class="key" data-key="G"> G</button>
+    <button class="key" data-key="H"> H</H1></button>
+    <button class="key" data-key="J"> J</button>
+    <button class="key" data-key="K"> K</button>
+    <button class="key" data-key="L"> L</button>
+   
+    <div class="space"></div>
+    <button data-enter class="key"> Ent</button>
+
+    <button class="key" data-key="Z"> Z</button>
+    <button class="key" data-key="X"> X</button>
+    <button class="key" data-key="C"> C</button>
+    <button class="key" data-key="V"> V</button>
+    <button class="key" data-key="B"> B</button>
+    <button class="key" data-key="N"> N</button>
+    <button class="key" data-key="M"> M</button>
+    <button data-delete class="key"> Del</button>
+   </div>
+
+
+   <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="modal-title">How To Play</div>
+        <button data-close-button class="close-button">&times;</button>
+     </div>
+      
+     <div class="modal-body">
+           <div class="rules">
+               <p>Guess the WORDLE in six tries. <br><br>
+
+                   Each guess must be a valid five-letter word. Hit the enter button to submit. <br><br>
+                   
+                   After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+                  
+           </div>
+           <div class="examples">
+            <p id="correct">For Example <strong style="background-color:green; font-weight: 1.2;">S</strong> 
+               <strong style="background-color:yellow; font-weight: 1.2;">C</strong>
+               <strong style="background-color:gray; font-weight: 1.2;">A</strong>
+               <strong style="background-color:gray; font-weight: 1.2;">R</strong>
+               <strong style="background-color:gray; font-weight: 1.2;">Y</strong>            
+            
+            </p>
+
+               <p id="correct">The letter <strong style="background-color:green; font-weight: 1.2;">S</strong> is in the word and in the correct spot.</p>
+               <p id="present">The letter <strong style="background-color:yellow; font-weight: 1.2;">C</strong> is in the word but in the wrong spot.</p>
+               <p id="absent">The letter <strong style="background-color:gray; font-weight: 1.2;">A</strong>  is not in the word in any spot.</p>
+           </div>
+           <div class="note">
+               <p> A new WORDLE will be available each day!</p>
+           </div>
+       </div>
+
+   </div> 
+   <div id="overlay"></div>
+
+ </body>
+ <script src="/cdn/scripts/gameBoard.js"></script>
+</html>
