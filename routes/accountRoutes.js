@@ -23,15 +23,14 @@ router.get("/login", function (req, res) {
   res.render("login");
 });
 
-router.get("/logout",function(req,res){
-  req.logout();
-  res.redirect("/")
-})
+
 router.get("/play", isAuth,function(req,res){
   res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
 })
 
-
+router.get("/logout",function(req,res){
+  res.redirect("/")
+})
 //RESTful api
 
 router.get("/api/info", function (req, res) {
@@ -105,5 +104,14 @@ router.post("/api/login", async function (req, res) {
     //res.status(400);
     res.redirect(req.baseUrl + "/register");
   }
+});
+router.post("/api/logout",function(req,res){
+  req.session.destroy((err)=>{
+    if(err) throw err;
+    else{
+      res.redirect(req.baseUrl +"/logout")
+    }
+
+  });
 });
 module.exports = router;
