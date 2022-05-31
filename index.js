@@ -15,7 +15,7 @@ const connectDb = require('./database/config/db')
 // loading boadyParser
 const bodyParser = require("body-parser");
 const settingsRouter = require('./routes/settingsRouter.js') 
-connectDb()
+connectDb.connectDb()
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
 //use bodyParser for JSON and URL encoded form bodies
@@ -27,8 +27,9 @@ app.use(
   session({
     secret: "nhlamulo21",
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, //delete cookie after 1 day
-    saveUninitialized: true,
-    resave: true,
+    saveUninitialized: false,
+    resave: false,
+    store:connectDb.store,
   })
 );
 //mount the routes

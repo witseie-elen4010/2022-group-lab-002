@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 //const uriString= process.env.ATLAS_URI;
 const ATLAS_URI="mongodb+srv://Mulow21:1234%40Mulow@extreme-wordle.w2l6awc.mongodb.net/playersAccount?retryWrites=true"  
 //console.log('here...', path.resolve(__dirname, '../../.env'), uriString)
+const session = require("express-session");
+const MongoDBSession=require('connect-mongodb-session')(session)
 
 const connectDb = async () =>{
     try{
@@ -18,5 +20,10 @@ const connectDb = async () =>{
     }
 
 }
-
-module.exports = connectDb
+const store = new MongoDBSession(
+    {
+      uri: ATLAS_URI,
+      collection: "playerSessions", 
+    }
+)
+module.exports = {connectDb, store}

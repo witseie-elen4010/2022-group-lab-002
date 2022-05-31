@@ -6,7 +6,15 @@ const userData = require("../modules/accountData.js");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const players = require("../modules/players");
-
+//const session = require("express-session");
+const isAuth =(req, res,next)=>{
+  if(req.session.isAuth){
+    next()
+  }
+  else{
+    res.redirect(req.baseUrl + "/login")
+  }
+}
 router.get("/register", function (req, res) {
   res.render("register");
 });
@@ -19,6 +27,10 @@ router.get("/logout",function(req,res){
   req.logout();
   res.redirect("/")
 })
+router.get("/play", isAuth,function(req,res){
+  res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
+})
+
 
 //RESTful api
 
@@ -81,7 +93,9 @@ router.post("/api/login", async function (req, res) {
 
     if (pass) {
       req.flash("success", "Login successful");
-      res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
+      req.session.isAuth=true
+      //res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
+      res.redirect(req.baseUrl+"/play")
     } else {
       req.flash("error", "password does not match");
       res.redirect(req.baseUrl + "/login");
