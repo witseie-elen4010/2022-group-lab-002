@@ -1,12 +1,43 @@
-.white{
+.accordian .contentBx .label::before{
+    content:'+';
+    position: absolute;
+    top: 118px;
+    right: 75px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+.accordian .contentBx .content{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    overflow-y: auto; 
+}
+
+.accordian .contentBx.active .content{
+    height: 150px;
+}
+
+.accordian .contentBx.active .label::before{
+    content:'-';
+}
+
+nav {
+    border: 1px solid ;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+  }
+body.white{
     background:white;
     color:black;
 }
-.black{
+body.black{
     background:black;
     color:white;
 }
-.grey{
+body.grey{
     background:grey;
     color:white;
 }
