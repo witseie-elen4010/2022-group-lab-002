@@ -10,19 +10,6 @@ let distributions = document.getElementById('guess-distribution')
 let nodeTemplate = document.createElement('template')
 nodeTemplate.innerHTML = '\n    <div class="myProgress">\n      <div class="myBar"> \n        </div>\n</div>\n        </div>\n <br/>'
 
-  if(!gameOver) {
-    tries[currentAttempt]++
-
-    $('link-body').on('click', function(e){
-      e.preventDefault()
-      $('#theModal').modal('show').find('.modal-content').load($(this).attr('href'))
-    })
-        scoreDiplay()
-        scoreDistribution()
-    
-  
-  } 
-
 function gameScore () {
   return tries.reduce((accumulator, currentValue) => accumulator + currentValue)
 }

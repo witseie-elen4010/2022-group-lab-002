@@ -12,7 +12,7 @@ const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
-const connectDB = require('./database/config/db');
+const connectDB = require('./database/config/dataFile');
 
 
 connectDB()
