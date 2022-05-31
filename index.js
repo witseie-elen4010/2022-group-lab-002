@@ -13,6 +13,7 @@ const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
 // loading boadyParser
 const bodyParser = require("body-parser");
+const settingsRouter = require('./routes/settingsRouter.js') 
 
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -40,7 +41,7 @@ app.use('/game', gameRouter)
 app.use('/share',shareScoreRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
-
+app.use("/settings",settingsRouter)
 
 const port = process.env.PORT || 3000;
 app.listen(port);
