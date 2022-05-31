@@ -12,10 +12,10 @@ const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
-const connectDB = require('./database/config/dataFile');
+const connectDB_ = require('./database/config/dataFile');
 
 
-connectDB()
+connectDB_()
 // loading boadyParser
 const bodyParser = require("body-parser");
 const settingsRouter = require('./routes/settingsRouter.js') 
