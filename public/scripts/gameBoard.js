@@ -12995,6 +12995,7 @@ const targetWord = chooseWord().toUpperCase()
 let guessedWord = ''
 let gameOver = false
 
+let colours = []
 
 window.onload = function () {
   initializeGrid()
@@ -13106,7 +13107,7 @@ function clickEnter(){
     update()
     currentAttempt++
     letterPosition = 0
-    letterPosition = 0
+    colours = []
     guessedWord = []
   
   }else{
@@ -13146,12 +13147,15 @@ function update () {
     if (targetWord[c] === letter) {
       currentTile.classList.add('correct')
       correctLetterCount++
+      colours.push("green")
     } else if (targetWord.includes(letter)) {
       // is it in the word?
       currentTile.classList.add('present')
+      colours.push("yellow")
     } else {
       // No in the word
       currentTile.classList.add('absent')
+      colours.push("grey")
     }
   }
   winConditions(correctLetterCount, currentAttempt)
@@ -13196,3 +13200,6 @@ function closeModal (modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
+
+
+module.exports = [gameOver,currentAttempt,colours]
