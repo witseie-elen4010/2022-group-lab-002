@@ -37,7 +37,7 @@ router.post("/api/register", async function (req, res) {
   //check if account already exists
   const playerExits = await players.findOne({ email });
   const usernameExist= await players.findOne({username});
-  if (playerExits || username) {
+  if (playerExits || usernameExist) {
     req.flash("error", "Account already exist, Login to your account");
     res.status(400).redirect(req.baseUrl + "/login");
   }
@@ -60,11 +60,11 @@ else{
     req.flash("success", "Registration successful, Login to your account");
     res.redirect(req.baseUrl + "/login");
   }
-   else {
-    // res.status(400);
-    req.flash("error", "Account already exist, Login to your account");
-    res.redirect(req.baseUrl + "/login");
-  }
+  //  else {
+  //   // res.status(400);
+  //   req.flash("error", "Account already exist, Login to your account");
+  //   res.redirect(req.baseUrl + "/login");
+  // }
 }
 });
 

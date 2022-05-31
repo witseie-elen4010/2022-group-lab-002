@@ -2,7 +2,7 @@ const path = require("path");
 const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 const mongoose = require('mongoose')
 //const uriString= process.env.ATLAS_URI;
-const ATLAS_URI="mongodb+srv://Mulow21:1234%40Mulow@extreme-wordle.w2l6awc.mongodb.net/playersAccount?retryWrites=true&w=majoritygit" 
+const ATLAS_URI="mongodb+srv://Mulow21:1234%40Mulow@extreme-wordle.w2l6awc.mongodb.net/playersAccount?retryWrites=true"  
 //console.log('here...', path.resolve(__dirname, '../../.env'), uriString)
 
 const connectDb = async () =>{
