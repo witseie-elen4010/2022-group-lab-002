@@ -8,4 +8,5 @@ gameRouter.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/gameBoard.html'))
 })
 
+
 module.exports = gameRouter
