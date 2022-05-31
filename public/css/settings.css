@@ -1,8 +1,8 @@
 .accordian .contentBx .label::before{
     content:'+';
     position: absolute;
-    top: 118px;
-    right: 75px;
+    top: 9px;
+    right: 70px;
     transform: translateY(-50%);
     font-size: 1.5em;
 }
@@ -40,4 +40,9 @@ body.black{
 body.grey{
     background:grey;
     color:white;
+}
+#button {
+    border: 2px solid rgb(235, 227, 227);
+    border-radius: 5px;
+    text-align: center;
 }
