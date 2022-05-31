@@ -87,3 +87,9 @@ hr{
     float: right;
 
 }
+
+.label{
+    position: absolute;
+    top: 118px;
+    right: 0px;
+}
