@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content:center;
+}
+
+#inputMessage{
+    flex-grow: 1
+}
+
+#messageContainer div{
+    background-color: rgb(33, 183, 194);
+    padding: 5px
+}
+
+#messageContainer div:nth-child(2n){
+    background: rgb(193, 239, 255);
+}
+
+#messageContainer{
+    max-width: 380px;
+    width: 80%;
+}
+
+#sendContainer {
+    background-color: white;
+    bottom:0;
+    position: fixed;
+    max-width: 380px;
+    width: 80%;
+    display: flex;
+    padding-bottom: 40px;
+}
+
+.temporary{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:20px;
+}
