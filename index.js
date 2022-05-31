@@ -44,6 +44,7 @@ app.use("/cdn", express.static("public")); // mounts the public directory to /cd
 
 app.use("/settings",settingsRouter)
 
+
 const port = process.env.PORT || 3000;
 app.listen(port);
 console.log("Express server running on port", port);
