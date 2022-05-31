@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 
 const scoreSchema = mongoose.Schema({
-    __id:{
+    _id:{
         type: String,
         required: [true, "Include username"]
     },
