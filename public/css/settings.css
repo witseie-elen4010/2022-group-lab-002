@@ -1,35 +1,3 @@
-
-.accordian .contentBx .label::before{
-    content:'+';
-    position: absolute;
-    top: 9px;
-    right: 70px;
-    transform: translateY(-50%);
-    font-size: 1.5em;
-}
-
-.accordian .contentBx .content{
-    position: relative;
-    height: 0;
-    overflow: hidden;
-    overflow-y: auto; 
-}
-
-.accordian .contentBx.active .content{
-    height: 150px;
-}
-
-.accordian .contentBx.active .label::before{
-    content:'-';
-}
-
-nav {
-    border: 1px solid ;
-    padding-top: 50px;
-    padding-right: 30px;
-    padding-bottom: 50px;
-    padding-left: 80px;
-}
 .white{
     background:white;
     color:black;
@@ -41,21 +9,4 @@ nav {
 .grey{
     background:grey;
     color:white;
-}
-body.white{
-    background:white;
-    color:black;
-}
-.black{
-    background:black;
-    color:white;
-}
-.grey{
-    background:grey;
-    color:white;
-}
-#button {
-    border: 2px solid rgb(235, 227, 227);
-    border-radius: 5px;
-    text-align: center;
 }
