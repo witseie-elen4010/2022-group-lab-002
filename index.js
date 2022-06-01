@@ -10,7 +10,12 @@ const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
+//const gameModeRouter=require("./routes/gameMode")
 const connectDb = require('./database/config/db')
+const http=require('http')
+const server=http.createServer(app)
+const {Server}=require("socket.io");
+const io = new Server(server)
 // loading boadyParser
 const bodyParser = require("body-parser");
 const settingsRouter = require('./routes/settingsRouter.js') 
@@ -40,11 +45,17 @@ app.use("/account", accountRouter);
 app.use('/gameScores', scoreRouter)
 app.use('/game', gameRouter)
 app.use('/share',shareScoreRouter)
+//app.use('/gamemode',gameModeRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/settings",settingsRouter)
-
+io.on('connection',(socket) =>{
+  console.log('a user connected')
+  socket.on('chat message', (msg)=>{
+    console.log('message: ' + msg);
+  })
+})
 
 const port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(port);
 console.log("Express server running on port", port);
