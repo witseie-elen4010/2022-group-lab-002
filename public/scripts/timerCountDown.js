@@ -10,7 +10,7 @@ let timerObject = setInterval(function countDownTimer() {
     let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60))
     let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000)
     
-    document.getElementById('remainingTime').innerHTML = hours + ':' + minutes + ':' + seconds
+    //document.getElementById('remainingTime').innerHTML = hours + ':' + minutes + ':' + seconds
     if (timeDifference < 0) {
       clearInterval(timerObject)
     }

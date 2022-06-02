@@ -1,13 +1,33 @@
+
+/*
+fetch('/gameScores/api/scores') // Returns a Promise for the GET request
+  .then(response => {
+    if (response.ok) { return response.json() } // Return the response parse as JSON
+    else { throw 'Failed to load classlist: response code invalid!' }
+  })
+  .then(playerScore => {
+    const classList = document.getElementById('classList')
+    playerScore.forEach(data => {
+      attemptsData.push(data.attempts)
+      const li = document.createElement('LI')
+      const liText = document.createTextNode(data.attempts)
+      li.className += 'student'
+      li.appendChild(liText) 
+      classList.appendChild(li)
+    })
+  })
+  .catch(e => {
+    alert(e)
+  })
+*/
 'use strict'
 
-const tries = [ 3, 0, 0, 0, 1, 0 ]
+const attemptsData = [ ]
 let button = document.getElementById('student')
 let scoreValue = document.getElementById('scoreValue')
 let distributions = document.getElementById('guess-distribution')
 let nodeTemplate = document.createElement('template')
-nodeTemplate.innerHTML = '\n    <div class="myProgress">\n      <div class="myBar"> \n        </div>\n</div>\n        </div>\n <br/>'
-
-
+nodeTemplate.innerHTML = '\n    <div class="my-progress">\n      <div class="my-bar"> \n        </div>\n</div>\n        </div>\n <br/>'
 
 button.addEventListener('click', function () {
   scoreDiplay()
@@ -15,20 +35,28 @@ button.addEventListener('click', function () {
 }, false)
 
 
-fetch('/gameScores/api/list')
-  .then(function (response) {
+fetch('/gameScores/api/scores') // Returns a Promise for the GET request
+  .then(response => {
     if (response.ok) { return response.json() } // Return the response parse as JSON
-    else { throw 'Failed to load gameScores: response code invalid!' }
-})
-.then(function (data) {
-  data = tries.slice()
-})
-.catch(function (e) { 
-    alert(e) 
+    else { throw 'Failed to load classlist: response code invalid!' }
+  })
+  .then(playerScore => {
+    //const classList = document.getElementById('classList')
+    playerScore.forEach(data => {
+      attemptsData.push(data.attempts)
+      //const li = document.createElement('LI')
+      //const liText = document.createTextNode(data.attempts)
+      //li.className += 'student'
+      //li.appendChild(liText) 
+      //classList.appendChild(li)
+    })
+  })
+  .catch(e => {
+    alert(e)
   })
 
 function gameScore () {
-  return tries.reduce((accumulator, currentValue) => accumulator + currentValue)
+  return attemptsData.reduce((accumulator, currentValue) => accumulator + currentValue)
 }
 
 function scoreDiplay () {
@@ -44,14 +72,14 @@ function scoreDistribution () {
     distributions.style.textAlign = 'center'
     distributions.innerText = 'No Data'
   }
-  else for(let i = 0; i < tries.length; i++ ) {
+  else for(let i = 0; i < attemptsData.length; i++ ) {
     let theNode = nodeTemplate.content.cloneNode(!0)
-    let barValue = tries[i]
-    let barSize =  tries.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue))
-    let barWidth = (tries[i]/barSize) * 100
-    let barGraph = theNode.querySelector('.myBar')
+    let barValue = attemptsData[i]
+    let barSize =  attemptsData.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue))
+    let barWidth = (attemptsData[i]/barSize) * 100
+    let barGraph = theNode.querySelector('.my-bar')
     if(barGraph.style.width = ''.concat(barWidth, '%'), "number" == typeof barValue) {
-      theNode.querySelector('.myBar').textContent = barValue, barValue >= 0
+      theNode.querySelector('.my-bar').textContent = barValue, barValue >= 0
     }
     distributions.appendChild(theNode)
   }

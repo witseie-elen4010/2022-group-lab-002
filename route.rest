@@ -1,0 +1,25 @@
+GET http://localhost:3000/gameScores/api/scores
+
+
+###
+
+GET http://localhost:3000/gameScores/api/scores
+
+
+####
+
+POST http://localhost:3000/gameScores/api/scores
+Content-Type: application/json
+
+{
+    "_id": "khumalom",
+    "score": 5,
+    "playerTries": {
+        "tryOne": 0,
+        "tryTwo": 0,
+        "tryThree": 0,
+        "tryFour": 0,
+        "tryFive": 0,
+        "trySix": 0
+    }
+}
