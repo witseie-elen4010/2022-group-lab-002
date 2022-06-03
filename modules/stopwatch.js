@@ -3,9 +3,7 @@
 let intervals = null
 let timer = 0
 
-function timerStart () {
-    timer++
-}
+function timerStart () { timer++ }
 
 module.exports  = {
     start: function () {

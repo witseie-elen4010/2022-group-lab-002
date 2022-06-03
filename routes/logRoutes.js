@@ -11,18 +11,14 @@ router.get('/ranks', function (req, res) {
 })
 
 router.get('/api/logs/:id', getPlayer, (req, res) => {
-  //const player = { res.player_ }
-  //res.render('../views/score', { player_ })
   res.json(res.player_)
 })
 
 router.get('/api/logs', async (req, res) => {
   try {
     const playerLogs = await gameLogs.find()
-    //res.render('../views/score', { playerScore })
     console.log(playerLogs)
     res.json(playerLogs)
-    //res.redirect(req.baseUrl + '/score')
   } catch (err) {
     res.status(500).json({ message: err.message })
     return
