@@ -68,12 +68,12 @@ hr{
 
 
 .correct{
-    background-color: #538d4e;
+    background-color: green;
     color:  white;
 }
 
 .present{
-    background-color: #b59f3b;
+    background-color: yellow;
     color:  white;
 }
 

@@ -1,14 +1,31 @@
 'use strict'
 
-const { gameOver, currentAttempt } = require("./gameBoard")
-
-const tries = [ ]
-const enterButton = document.querySelectorAll('[data-enter]')
-const overlay = document.getElementById('overlay')
-let scoreValue = document.getElementById('score-value')
+const tries = [ 3, 0, 0, 0, 1, 0 ]
+let button = document.getElementById('student')
+let scoreValue = document.getElementById('scoreValue')
 let distributions = document.getElementById('guess-distribution')
 let nodeTemplate = document.createElement('template')
 nodeTemplate.innerHTML = '\n    <div class="myProgress">\n      <div class="myBar"> \n        </div>\n</div>\n        </div>\n <br/>'
+
+
+
+button.addEventListener('click', function () {
+  scoreDiplay()
+  scoreDistribution()
+}, false)
+
+
+fetch('/gameScores/api/list')
+  .then(function (response) {
+    if (response.ok) { return response.json() } // Return the response parse as JSON
+    else { throw 'Failed to load gameScores: response code invalid!' }
+})
+.then(function (data) {
+  data = tries.slice()
+})
+.catch(function (e) { 
+    alert(e) 
+  })
 
 function gameScore () {
   return tries.reduce((accumulator, currentValue) => accumulator + currentValue)
