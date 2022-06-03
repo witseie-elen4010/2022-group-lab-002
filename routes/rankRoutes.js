@@ -26,10 +26,11 @@ router.post('/api/create', async (req, res) => {
   const playerRanks = new gameRanks({
     userID: req.body.userID,
     gameOver: req.body.gameOver,
+    userScores: req.body.userScores
   })
   try {
-    const createLogs = await playerRanks.save()
-    res.status(201).json(createLogs)
+    const createRanks = await playerRanks.save()
+    res.status(201).json(createRanks)
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
