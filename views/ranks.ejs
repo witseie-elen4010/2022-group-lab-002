@@ -9,11 +9,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <% playerRankings.forEach(data => { %>
+    <% playerRanks.forEach(data => { %>
         <tr>
             <td><%= data.userID %></td>
             <td><%= data.userScores.score %></td>
-            <td><%= data.userScores.time %></td>
+            <td><%= data.userScores.timePlayed %></td>
         </tr>
     <% }) %>
 

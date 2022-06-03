@@ -16,7 +16,8 @@ router.get('/api/ranks', async (req, res) => {
     .limit(5)
     .lean()
     console.log(playerRanks)
-    res.json(playerRanks)
+    res.render('../views/ranks', { playerRanks })
+    //res.json(playerRanks)
   } catch (err) {
     res.status(500).json({ message: err.message })
     return
