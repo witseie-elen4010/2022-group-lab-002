@@ -8,13 +8,12 @@ const expressEjsLayout = require("express-ejs-layouts");
 const mainRouter = require("./routes/mainRouter.js");
 const accountRouter = require("./routes/accountRoutes.js");
 const scoreRouter = require('./routes/scoreRoutes')
+const rankRouter = require('./routes/rankRoutes')
 const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
-const connectDB_ = require('./database/config/dataFile');
 const connectDb = require('./database/config/db')
 
-connectDB_()
 // loading boadyParser
 const bodyParser = require("body-parser");
 const settingsRouter = require('./routes/settingsRouter.js') 
@@ -42,6 +41,7 @@ app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter);
 app.use('/gameScores', scoreRouter)
+app.use('/rankRoutes', rankRouter)
 app.use('/game', gameRouter)
 app.use('/share',shareScoreRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn

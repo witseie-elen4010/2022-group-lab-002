@@ -10,9 +10,11 @@ router.get('/share', function (req, res) {
 })
 
 router.get('/', async function (req, res) {
+  const getScore = req.body.playerScore
   try{
-    const subscribers = await gameScores.find()
-    res.json(subscribers)
+    const playerScore_ = await gameScores.findOne( {getScore} )
+    res.json(playerScore_)
+    
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
@@ -44,30 +46,5 @@ router.patch('/:id', async (req, res) => {
   res.json(gameScores.get(req.params.id))
 
 })
-
-/*
-// RESTful api
-
-
-
-router.post('/api/create', async function (req, res) {
-  const createScore = await gameScores.create({
-    text: req.body.text
-  })
-  console.log('Adding a new score to the database:', createScore)
-  res.json(createScore) // Respond with JSON
-})*/
-/*
-router.post('/api/delete', async function (req, res) {
-  console.log('Deleting the following score from database:', req.body.deleteIndex)
-  classList.delete(req.body.deleteIndex)
-  res.redirect(req.baseUrl)
-})
-
-router.post('/api/edit', async function (req, res) {
-  console.log('Editing a new score in the database:', req.body.newScoreID)
-  classList.edit(req.body.newScore, req.body.newScoreID)
-  res.redirect(req.baseUrl)
-})*/
 
 module.exports = router

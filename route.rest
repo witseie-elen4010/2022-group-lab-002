@@ -1,4 +1,4 @@
-GET http://localhost:3000/gameScores/6295d77101fd61cdb9e3e3df
+GET http://localhost:3000/gameScores/
 
 ###
 
@@ -6,16 +6,24 @@ POST http://localhost:3000/gameScores/
 Content-Type: application/json
 
 {
-    "username": "Mandla",
-    "playerTries": 6,
-    "playerScore": 5
+    "username": "Ndeme",
+    "playerTries": 2,
+    "playerScore": 8
 }
 
 ###
 
-GET http://localhost:3000/gameScores/
+GET http://localhost:3000/rankRoutes/
+
+
+###
+POST http://localhost:3000/rankRoutes/
 Content-Type: application/json
 
 {
-    "username": "Nhlamulo"
+    "userID": "Ndeme",
+    "userScores": {
+        "score":9,
+        "time": 2
+    }
 }
