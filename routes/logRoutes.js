@@ -45,20 +45,19 @@ router.post('/api/create', async (req, res) => {
 })
 
 router.patch('/api/logs/:id', getPlayer, async (req, res) => {
-  if (req.body.userStart != false) {
-    gameStopwatch.start()
-    console.log('Timer has started')
+
+    res.player_.userStart = req.body.userStart
     if(req.body.gameOver != false) {
         res.player_.timePlayed = gameStopwatch.getTime()
         console.log('Timer is at:', gameStopwatch.getTime())
+        gameStopwatch.reset()
+    } else if(req.body.userStart != false) {
+        gameStopwatch.start()
+        console.log('Timer has started')
     }
-  } else {
-    res.player_.userStart = req.body.userStart
-  }
 
   try {
     const updatedData = await res.player_.save()
-    //console.log('Timer stopped at:', res.player_)
     res.json(updatedData)
   } catch (err) {
     res.status(400).json({ message: err.message })
