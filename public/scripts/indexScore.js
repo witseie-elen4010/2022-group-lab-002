@@ -1,25 +1,3 @@
-
-/*
-fetch('/gameScores/api/scores') // Returns a Promise for the GET request
-  .then(response => {
-    if (response.ok) { return response.json() } // Return the response parse as JSON
-    else { throw 'Failed to load classlist: response code invalid!' }
-  })
-  .then(playerScore => {
-    const classList = document.getElementById('classList')
-    playerScore.forEach(data => {
-      attemptsData.push(data.attempts)
-      const li = document.createElement('LI')
-      const liText = document.createTextNode(data.attempts)
-      li.className += 'student'
-      li.appendChild(liText) 
-      classList.appendChild(li)
-    })
-  })
-  .catch(e => {
-    alert(e)
-  })
-*/
 'use strict'
 
 const attemptsData = [ ]
@@ -41,14 +19,8 @@ fetch('/gameScores/api/scores') // Returns a Promise for the GET request
     else { throw 'Failed to load classlist: response code invalid!' }
   })
   .then(playerScore => {
-    //const classList = document.getElementById('classList')
     playerScore.forEach(data => {
       attemptsData.push(data.attempts)
-      //const li = document.createElement('LI')
-      //const liText = document.createTextNode(data.attempts)
-      //li.className += 'student'
-      //li.appendChild(liText) 
-      //classList.appendChild(li)
     })
   })
   .catch(e => {
