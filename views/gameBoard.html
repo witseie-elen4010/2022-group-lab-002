@@ -10,10 +10,14 @@
 
  </head>
  <body>
+    <h1>EXTREME WORDLE</h1>
+    <a href="/views/score.html" class="link-body"></a>
+
     <h1>Wordle</h1>
    <form action="api/logout" method="post">
    <button>Logout </button>
    </form>
+
     <hr>
     <br>
     
@@ -72,16 +76,16 @@
                   
            </div>
            <div class="examples">
-            <p id="correct">For Example <strong style="background-color:green; font-weight: 1.2;">S</strong> 
-               <strong style="background-color:yellow; font-weight: 1.2;">C</strong>
+            <p id="correct">For Example <strong style="background-color:#538d4e; font-weight: 1.2;">S</strong> 
+               <strong style="background-color:#b59f3b; font-weight: 1.2;">C</strong>
                <strong style="background-color:gray; font-weight: 1.2;">A</strong>
                <strong style="background-color:gray; font-weight: 1.2;">R</strong>
                <strong style="background-color:gray; font-weight: 1.2;">Y</strong>            
             
             </p>
 
-               <p id="correct">The letter <strong style="background-color:green; font-weight: 1.2;">S</strong> is in the word and in the correct spot.</p>
-               <p id="present">The letter <strong style="background-color:yellow; font-weight: 1.2;">C</strong> is in the word but in the wrong spot.</p>
+               <p id="correct">The letter <strong style="background-color:#538d4e; font-weight: 1.2;">S</strong> is in the word and in the correct spot.</p>
+               <p id="present">The letter <strong style="background-color:#b59f3b; font-weight: 1.2;">C</strong> is in the word but in the wrong spot.</p>
                <p id="absent">The letter <strong style="background-color:gray; font-weight: 1.2;">A</strong>  is not in the word in any spot.</p>
            </div>
            <div class="note">
@@ -91,7 +95,13 @@
 
    </div> 
    <div id="overlay"></div>
-
+   
+   <div id="theModal" class="modal fade text-center">
+      <div class="modal-dialog">
+        <div class="modal-content"></div>
+      </div>
+   </div>
+<!-- JavaScript Bundle with Popper -->
  </body>
  <script src="/cdn/scripts/gameBoard.js"></script>
 

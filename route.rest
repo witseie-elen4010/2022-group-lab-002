@@ -1,0 +1,21 @@
+GET http://localhost:3000/gameScores/6295d77101fd61cdb9e3e3df
+
+###
+
+POST http://localhost:3000/gameScores/
+Content-Type: application/json
+
+{
+    "username": "Mandla",
+    "playerTries": 6,
+    "playerScore": 5
+}
+
+###
+
+GET http://localhost:3000/gameScores/
+Content-Type: application/json
+
+{
+    "username": "Nhlamulo"
+}

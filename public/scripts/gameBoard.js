@@ -15,7 +15,7 @@ let correctLetterCount = 0
 const dictionary = [
   'aahed',
   'aalii',
-  'aargh',
+  'aargh'/*,
   'aarti',
   'abaca',
   'abaci',
@@ -12984,7 +12984,7 @@ const dictionary = [
   'rower',
   'artsy',
   'rural',
-  'shave'
+  'shave'*/
 ]
 const index = Math.floor(Math.random() * dictionary.length) + 1
 function chooseWord () {
@@ -13166,7 +13166,7 @@ function update () {
 function winConditions (count, attempts) {
   // Win Condition
   if (count === COLUMNS) {
-    alert('YOU WIN')
+    //alert('YOU WIN')
     gameOver = true
     return gameOver
   }
