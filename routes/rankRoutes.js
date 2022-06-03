@@ -5,13 +5,15 @@ const express = require('express')
 const router = express.Router()
 const gameRanks = require('../modules/ranksData')
 
-router.get('/api/logs/:id', getPlayer, (req, res) => {
+router.get('/api/ranks/:id', getPlayer, (req, res) => {
   res.json(res.player_)
 })
 
 router.get('/api/ranks', async (req, res) => {
   try {
     const playerRanks = await gameRanks.find()
+    .sort({ "userScores.score": "desc", "userScores.timePlayed": "asc" })
+    .limit(5).
     console.log(playerRanks)
     res.json(playerRanks)
   } catch (err) {
@@ -23,9 +25,7 @@ router.get('/api/ranks', async (req, res) => {
 router.post('/api/create', async (req, res) => {
   const playerRanks = new gameRanks({
     userID: req.body.userID,
-    score: req.body.score,
     gameOver: req.body.gameOver,
-    timePlayed: req.body.timePlayed
   })
   try {
     const createLogs = await playerRanks.save()

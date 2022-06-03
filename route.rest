@@ -1,25 +1,61 @@
-GET http://localhost:3000/gameScores/api/scores
+GET http://localhost:3000/gameLogs/api/logs
 
 
 ###
 
-GET http://localhost:3000/gameScores/api/scores
+GET http://localhost:3000/gameLogs/api/logs/629a0a1ed29ce73f6efa398a
 
 
 ####
 
-POST http://localhost:3000/gameScores/api/scores
+POST http://localhost:3000/gameLogs/api/create
 Content-Type: application/json
 
 {
-    "_id": "khumalom",
-    "score": 5,
-    "playerTries": {
-        "tryOne": 0,
-        "tryTwo": 0,
-        "tryThree": 0,
-        "tryFour": 0,
-        "tryFive": 0,
-        "trySix": 0
-    }
+    "userID": "mandla",
+    "userStart": true,
+    "gameOver": false
+}
+
+
+###
+PATCH  http://localhost:3000/gameLogs/api/logs/629a0a1ed29ce73f6efa398a
+Content-Type: application/json
+
+{
+    "userStart": true,
+    "gameOver": true
+}
+
+
+###
+
+GET http://localhost:3000/gameRanks/api/ranks
+
+
+###
+
+GET http://localhost:3000/gameLogs/api/logs/629a0a1ed29ce73f6efa398a
+
+
+####
+
+POST http://localhost:3000/gameLogs/api/create
+Content-Type: application/json
+
+{
+    "userID": "mandla",
+    "score": true,
+    "gameOver": false,
+    "timePlayed": 53
+}
+
+
+###
+PATCH  http://localhost:3000/gameLogs/api/logs/629a0a1ed29ce73f6efa398a
+Content-Type: application/json
+
+{
+    "userStart": true,
+    "gameOver": true
 }
