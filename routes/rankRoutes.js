@@ -13,7 +13,8 @@ router.get('/api/ranks', async (req, res) => {
   try {
     const playerRanks = await gameRanks.find()
     .sort({ "userScores.score": "desc", "userScores.timePlayed": "asc" })
-    .limit(5).
+    .limit(5)
+    .lean()
     console.log(playerRanks)
     res.json(playerRanks)
   } catch (err) {
