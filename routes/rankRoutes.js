@@ -3,22 +3,17 @@
 const path = require('path')
 const express = require('express')
 const router = express.Router()
-const gameLogs = require('../modules/logData')
-const gameStopwatch = require('../modules/stopwatch')
-
-router.get('/ranks', function (req, res) {
-  res.render('ranks');
-})
+const gameRanks = require('../modules/ranksData')
 
 router.get('/api/logs/:id', getPlayer, (req, res) => {
   res.json(res.player_)
 })
 
-router.get('/api/logs', async (req, res) => {
+router.get('/api/ranks', async (req, res) => {
   try {
-    const playerLogs = await gameLogs.find()
-    console.log(playerLogs)
-    res.json(playerLogs)
+    const playerRanks = await gameRanks.find()
+    console.log(playerRanks)
+    res.json(playerRanks)
   } catch (err) {
     res.status(500).json({ message: err.message })
     return
@@ -26,21 +21,21 @@ router.get('/api/logs', async (req, res) => {
 })
 
 router.post('/api/create', async (req, res) => {
-  const playerLogs = new gameLogs({
+  const playerRanks = new gameRanks({
     userID: req.body.userID,
-    userStart: req.body.userStart,
+    score: req.body.score,
     gameOver: req.body.gameOver,
     timePlayed: req.body.timePlayed
   })
   try {
-    const createLogs = await playerLogs.save()
+    const createLogs = await playerRanks.save()
     res.status(201).json(createLogs)
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
 })
 
-router.patch('/api/logs/:id', getPlayer, async (req, res) => {
+router.patch('/api/ranks/:id', getPlayer, async (req, res) => {
 
     res.player_.userStart = req.body.userStart
     if(req.body.gameOver != false) {
@@ -63,7 +58,7 @@ router.patch('/api/logs/:id', getPlayer, async (req, res) => {
 async function getPlayer(req, res, next) {
   let player_
   try {
-    player_ = await gameLogs.findById(req.params.id)
+    player_ = await gameRanks.findById(req.params.id)
     if (player_ == null) {
       return res.status(404).json({ message: 'Cannot find username' })
     }

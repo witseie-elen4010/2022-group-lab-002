@@ -11,6 +11,7 @@ const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
 const logRouter = require('./routes/logRoutes')
+const ranksRouter = require('./routes/rankRoutes')
 const connectDb = require('./database/config/db')
 // loading boadyParser
 const bodyParser = require("body-parser");
@@ -40,6 +41,7 @@ app.use("/", mainRouter);
 app.use("/account", accountRouter);
 app.use('/gameScores', scoreRouter)
 app.use('/gameLogs', logRouter)
+app.use('/gameRanks', ranksRouter)
 app.use('/game', gameRouter)
 app.use('/share',shareScoreRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
