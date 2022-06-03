@@ -8,24 +8,21 @@ const gameScore = require('../modules/scoreData')
 router.get('/score', function (req, res) {
     res.sendFile(path.join(__dirname, '../views/score.html'))
 })
-/*
-router.get('/score', function (req, res) {
-  res.render('score');
-});
-*/
+
 router.get('/api/scores/:id', getPlayer, (req, res) => {
-  //const player = { res.player_ }
-  //res.render('../views/score', { player_ })
   res.json(res.player_)
 })
 
 router.get('/api/scores', async (req, res) => {
   try {
     const playerScore = await gameScore.find()
-    //res.render('../views/score', { playerScore })
     console.log(playerScore)
-    res.json(playerScore)
-    //res.redirect(req.baseUrl + '/score')
+
+    if(req.body.gameOver != false) {
+      res.sendFile(path.join(__dirname, '../views/score.html'))
+    } else {
+      res.json(playerScore)
+    }
   } catch (err) {
     res.status(500).json({ message: err.message })
     return

@@ -100,7 +100,7 @@ router.post("/api/login", async function (req, res) {
 router.post("/api/logout",function(req,res){
   req.session.destroy((err)=>{
     if(err) throw err;
-    else{
+    else {
       res.redirect("/")
     }
 

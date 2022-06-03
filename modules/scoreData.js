@@ -14,6 +14,10 @@ const scoreSchema = mongoose.Schema({
     attempts:{
         type: Array,
         items: { type: Number }
+    },
+    gameOver: { 
+        type: Boolean,
+        required: true 
     }
 }) 
 
