@@ -2,15 +2,11 @@
 
 const mongoose = require('mongoose')
 
-const scoreSchema = mongoose.Schema({
-    userID:{
-        type: String,
-        required: [true, "Include username"]
-    },
-    time:{
-        startAt: { type: new Date() }, 
-        endAt: { type: Date, required: true}
-    }
+const logSchema = mongoose.Schema({
+    userID: { type: String, required: true },
+    userStart: { type: Boolean, required: true },
+    gameOver: { type: Boolean, required: true },
+    timePlayed: {type: Date }
 }) 
 
-module.exports = mongoose.model('gameScores', scoreSchema)
+module.exports = mongoose.model('logs', logSchema)
