@@ -6,7 +6,6 @@ const overlay = document.getElementById('overlay')
 
 const ROWS = 6
 const COLUMNS = 5
-let gameState=false;
 let currentAttempt = 0
 let letterPosition = 0
 let correctLetterCount = 0
@@ -52,10 +51,14 @@ function enterLetter (keyEvent) {
 
 function getNewWord(){
   let newWord =''
-  for (let i=0; i<COLUMNS;i++){
-    const currentTile = document.getElementById(currentAttempt.toString() + '-' + i.toString() )
-    newWord = newWord +currentTile.innerText
+  if((currentAttempt+1)<= ROWS){
+    for (let i=0; i<COLUMNS;i++){
+      const currentTile = document.getElementById(currentAttempt.toString() + '-' + i.toString() )
+      newWord = newWord +currentTile.innerText
+    }
   }
+  else {newWord = ''}
+
   return newWord
 }
 
@@ -147,13 +150,15 @@ function verifyWords(){
   .then(response => response.json())
   .then(data =>{
     const colours= data.colours;
-    gameState= data.gameState
+    const winState= data.winState
+    const loseState = data.loseState
+    const targetWord = data.generatedWord
+    //console.log("GAME OUTCOME verify",gameState)
     const isPresent = data.isPresent
-    //= data.nextAttempt
     
     if(isPresent){
       console.log("from server: ",currentAttempt)
-    update(colours)
+    update(colours,winState,loseState,targetWord)
     colours=[]
     console.log("currentAttempt", currentAttempt)
     letterPosition = 0
@@ -164,7 +169,7 @@ function verifyWords(){
   .catch( err=> console.log('Error'))
 }
 // ****************** CHECK GAME PROGRESS **********************
-function update (colours) {
+function update (colours,winState,loseState,targetWord) {
   correctLetterCount = 0
   console.log("GAME COLOURS",colours)
   let word =[]
@@ -183,18 +188,19 @@ function update (colours) {
   currentAttempt++
   letterPosition =0
   colours =[]
-  winConditions ()
+  winConditions (winState,loseState,targetWord)
 }
 
 // ****************** WINNING CONDITIONS **********************
-function winConditions () {
+function winConditions (winState,loseState,targetWord) {
   // Win Condition
-  if (gameState) {
+ console.log("check last row",currentAttempt)
+ console.log("lloooseee",loseState)
+  if (winState) {
     alert('YOU WIN')
   }
-  // Lose condition
-  else
-    alert(`The correct word is ${targetWord}`)
+  else if(loseState)
+    alert(`You loose, ANSWER :${targetWord}`)
 }
 
 // ********************** INSTRUCTIONS ***************************8

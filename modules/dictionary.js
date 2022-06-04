@@ -13000,13 +13000,17 @@ let nextAttempt =0
             if (targetWord[c] === letter) {colours.push("green")
              correctLetterCount++}
             else if (targetWord.includes(letter)){colours.push("yellow")}
-            else{ colours.push("grey")}           
+            else { colours.push("grey")}           
         }
         return colours
     },
-    winCondition: function(attempt){
+    winCondition: function(){ 
         if (correctLetterCount === COLUMNS) {return true}
-        else if(attempt +1 === ROWS){ return false}
+        else return false
+    },
+    loseCodintion: function (attempt){
+        console.log('From dictionart attemps',attempt)
+        if((attempt+1) === ROWS){ return true}
         else return false
     },
     isValidWord: function(guessedWord){
