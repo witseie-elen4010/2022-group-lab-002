@@ -1,6 +1,7 @@
 .my-progress {
     width: 60%;
     background-color: white;
+    align-items: center;
     }
     
 .my-bar {
@@ -12,6 +13,8 @@
     color: white;
     display: flex;
     font-weight: bold;
-    color: var(--tile-text-color);
+    margin-top: 5px;
+    justify-content: right;
+  
     
   }

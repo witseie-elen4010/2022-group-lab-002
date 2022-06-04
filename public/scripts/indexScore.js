@@ -1,37 +1,17 @@
-
-/*
-fetch('/gameScores/api/scores') // Returns a Promise for the GET request
-  .then(response => {
-    if (response.ok) { return response.json() } // Return the response parse as JSON
-    else { throw 'Failed to load classlist: response code invalid!' }
-  })
-  .then(playerScore => {
-    const classList = document.getElementById('classList')
-    playerScore.forEach(data => {
-      attemptsData.push(data.attempts)
-      const li = document.createElement('LI')
-      const liText = document.createTextNode(data.attempts)
-      li.className += 'student'
-      li.appendChild(liText) 
-      classList.appendChild(li)
-    })
-  })
-  .catch(e => {
-    alert(e)
-  })
-*/
 'use strict'
 
-const attemptsData = [ ]
+let attemptsData = [ ]
 let button = document.getElementById('student')
 let scoreValue = document.getElementById('scoreValue')
 let distributions = document.getElementById('guess-distribution')
 let nodeTemplate = document.createElement('template')
-nodeTemplate.innerHTML = '\n    <div class="my-progress">\n      <div class="my-bar"> \n        </div>\n</div>\n        </div>\n <br/>'
+nodeTemplate.innerHTML = '\n  <div class="guess"></div> \n  <div class="my-progress">\n      <div class="my-bar"> \n        </div>\n</div>\n        </div>\n'
 
 button.addEventListener('click', function () {
   scoreDiplay()
+
   scoreDistribution()
+
 }, false)
 
 
@@ -41,15 +21,10 @@ fetch('/gameScores/api/scores') // Returns a Promise for the GET request
     else { throw 'Failed to load classlist: response code invalid!' }
   })
   .then(playerScore => {
-    //const classList = document.getElementById('classList')
     playerScore.forEach(data => {
-      attemptsData.push(data.attempts)
-      //const li = document.createElement('LI')
-      //const liText = document.createTextNode(data.attempts)
-      //li.className += 'student'
-      //li.appendChild(liText) 
-      //classList.appendChild(li)
+      attemptsData = data.attempts
     })
+    //attemptsData = playerScore.attempts.slice()
   })
   .catch(e => {
     alert(e)
@@ -71,16 +46,18 @@ function scoreDistribution () {
   if(gameScore() === 0) {
     distributions.style.textAlign = 'center'
     distributions.innerText = 'No Data'
-  }
-  else for(let i = 0; i < attemptsData.length; i++ ) {
+  } else for(let i = 0; i < attemptsData.length; i++ ) {
     let theNode = nodeTemplate.content.cloneNode(!0)
     let barValue = attemptsData[i]
+    
     let barSize =  attemptsData.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue))
-    let barWidth = (attemptsData[i]/barSize) * 100
+    let barWidth = Math.max(7, Math.round(barValue / barSize * 100));
+    
     let barGraph = theNode.querySelector('.my-bar')
     if(barGraph.style.width = ''.concat(barWidth, '%'), "number" == typeof barValue) {
-      theNode.querySelector('.my-bar').textContent = barValue, barValue >= 0
+      theNode.querySelector('.my-bar').textContent = barValue, barValue > 0
     }
-    distributions.appendChild(theNode)
+    if(distributions.childElementCount <= 10)
+      distributions.appendChild(theNode) 
   }
 }
