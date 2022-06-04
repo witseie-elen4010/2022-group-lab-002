@@ -1,0 +1,33 @@
+'use strict'
+
+const path = require('path')
+const express = require('express')
+const dictionaryRouter = express.Router()
+const dictionaryData = require("../modules/wordData");
+
+dictionaryRouter.get('/', async (req,res)=>{
+
+    try{
+        const words = await dictionaryData.find()
+       
+        res.json(words)
+    }
+    catch (err){
+        res.status(500).json({message: err.message})
+    }
+})
+
+dictionaryRouter.post('/api/dictionary',async (req,res)=>{
+    const dictionary1 = new dictionaryData({
+        dictionary: req.body.dictionary
+    })
+
+    try{
+        const dictionary2 = await dictionary1.save()
+        res.status(201).json(dictionary2)
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
+})
+
+module.exports = dictionaryRouter

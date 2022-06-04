@@ -4,10 +4,10 @@ const { Timestamp } = require('mongodb')
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    username:{
-        type: String,
-        required: [true, "Include username"]
-    },
+    // username:{
+    //     type: String,
+    //     required: [true, "Include username"]
+    // },
     playerTries:{
         type: Number,
         required: [true, "Include Player tries"]

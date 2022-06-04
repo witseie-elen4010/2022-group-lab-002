@@ -11,6 +11,7 @@ const flashMessages = require("./modules/flashMessages");
 const gameRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
 const connectDb = require('./database/config/db')
+// const gameDictionary= require('.//modules/dictionary')
 // loading boadyParser
 const bodyParser = require("body-parser");
 const settingsRouter = require('./routes/settingsRouter.js') 
@@ -31,6 +32,7 @@ app.use(
     store:connectDb.store,
   })
 );
+
 //mount the routes
 
 app.use(flash());
@@ -44,6 +46,24 @@ app.use("/cdn", express.static("public")); // mounts the public directory to /cd
 
 app.use("/settings",settingsRouter)
 
+// app.post('/api', (res,req)=>{
+//   const isPresent = gameDictionary.isValidWord()
+//   const guesseWord= req.body.guesseWord
+//   const currentAttempt= req.body.currentAttempt
+//  const generatedWord=gameDictionary.getTargetWord()
+// const colours=gameDictionary.checkWord(generatedWord,guesseWord)
+// const gameState=gameDictionary.winCondition(currentAttempt)
+// console.log('guessed: ',guesseWord)
+// console.log('WordOfDay: ',generatedWord)
+// console.log('Attempts: ',currentAttempt)
+// console.log(gameState)
+// console.log(colours)
+//   res.json({
+// colours,
+// gameState,
+// isPresent
+//   })
+// })
 
 const port = process.env.PORT || 3000;
 app.listen(port);
