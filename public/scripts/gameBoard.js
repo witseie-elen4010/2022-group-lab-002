@@ -4,7 +4,6 @@ const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
 
-
 const ROWS = 6
 const COLUMNS = 5
 
@@ -13050,6 +13049,7 @@ function submitGuess (keyEvent) {
         letterPosition = 0
         letterPosition = 0
         guessedWord = []
+        colours =[]
       
       }else{
     alert(`${guessedWord} is invalid. Try again`)
@@ -13109,6 +13109,7 @@ function clickEnter(){
     letterPosition = 0
     colours = []
     guessedWord = []
+    
   
   }else{
 alert(`${guessedWord} is invalid. Try again`)
@@ -13123,16 +13124,6 @@ function clickDelete(){
     guessedWord=guessedWord.slice(0,-1)
   }
 
-}
-
-function update () {
-  correctLetterCount = 0
-
-  for (let c = 0; c < COLUMNS; c++) {
-    const currentTile = document.getElementById(
-      currentAttempt.toString() + '-' + c.toString()
-    )
-    const letter = currentTile.innerText}
 }
 
 // ****************** CHECK GAME PROGRESS **********************
