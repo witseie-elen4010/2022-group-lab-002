@@ -12995,6 +12995,7 @@ let guessedWord = ''
 let gameOver = false
 
 let colours = []
+let attemptedWords = []
 
 window.onload = function () {
   initializeGrid()
@@ -13048,6 +13049,8 @@ function submitGuess (keyEvent) {
         currentAttempt++
         letterPosition = 0
         letterPosition = 0
+        attemptedWords.push(guessedWord)
+        console.log(attemptedWords)
         guessedWord = []
         colours =[]
       
@@ -13108,8 +13111,9 @@ function clickEnter(){
     currentAttempt++
     letterPosition = 0
     colours = []
+    attemptedWords.push(guessedWord)
+    console.log(attemptedWords)
     guessedWord = []
-    
   
   }else{
 alert(`${guessedWord} is invalid. Try again`)
@@ -13123,7 +13127,6 @@ function clickDelete(){
     currentTile.innerText = ''
     guessedWord=guessedWord.slice(0,-1)
   }
-
 }
 
 // ****************** CHECK GAME PROGRESS **********************
