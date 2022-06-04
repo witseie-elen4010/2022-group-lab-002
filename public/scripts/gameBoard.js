@@ -44,6 +44,7 @@ function enterLetter (keyEvent) {
       if (currentTile.innerText === '') {
         currentTile.innerText = keyEvent.code[3]
         letterPosition++
+        console.log("user attempts: ",currentAttempt)
       }
     }
   }
@@ -58,7 +59,7 @@ function getNewWord(){
   return newWord
 }
 
-function deleteLetter (keyEvent) {
+function deleteLetter (keyEvent, getNewWord) {
   if (keyEvent.code === 'Backspace') {
     if (letterPosition > 0 && letterPosition <= COLUMNS) {
       letterPosition -= 1
@@ -70,7 +71,7 @@ function deleteLetter (keyEvent) {
 
 function submitGuess (keyEvent) {
   if (keyEvent.code === 'Enter') {
-    verifyWords()   
+    verifyWords()
   }
 }
 
@@ -85,7 +86,7 @@ document.addEventListener('keyup', (keyEvent) => {
 })
 
   //Virtual keyboard
-  /*
+
 startInteraction()
 
 function startInteraction () {
@@ -113,21 +114,13 @@ function clickLetter(keyEvent){
   if (currentTile.innerText === '') {
       currentTile.innerText = keyEvent.toLowerCase()
       currentTile.textContent = keyEvent
-      guessedWord = guessedWord + `${keyEvent.toLowerCase()}`
       letterPosition++
   }}
 }
 
 function clickEnter(){
   verifyWords()
-  if(isPresent){
-    currentAttempt++
-    letterPosition = 0
-    attemptedWords.push(guessedWord)
-    guessedWord = []
-  }else{
- alert(`${guessedWord} is invalid. Try again`)
-}
+  currentAttempt++
 }
 
 function clickDelete(){
@@ -135,10 +128,9 @@ function clickDelete(){
     letterPosition -= 1
     const currentTile = document.getElementById(currentAttempt.toString() + '-' + letterPosition.toString() )
     currentTile.innerText = ''
-    guessedWord=guessedWord.slice(0,-1)
   }
 }
-*/
+
 function verifyWords(){
   const playerWord=getNewWord()
   let inputObject = {getNewWord:playerWord, currentAttempt:currentAttempt}
@@ -157,11 +149,13 @@ function verifyWords(){
     const colours= data.colours;
     gameState= data.gameState
     const isPresent = data.isPresent
+    //= data.nextAttempt
     
-    console.log('isPresent in fetch',isPresent)
     if(isPresent){
+      console.log("from server: ",currentAttempt)
     update(colours)
-    currentAttempt++
+    colours=[]
+    console.log("currentAttempt", currentAttempt)
     letterPosition = 0
     attemptedWords.push(getNewWord()) 
     }else{alert(`${getNewWord()} is invalid. Try again`) }
@@ -172,35 +166,27 @@ function verifyWords(){
 // ****************** CHECK GAME PROGRESS **********************
 function update (colours) {
   correctLetterCount = 0
-
+  console.log("GAME COLOURS",colours)
+  let word =[]
   for (let c = 0; c < COLUMNS; c++) {
+
     const currentTile = document.getElementById(currentAttempt.toString() + '-' + c.toString())
     // is the letter in the correct position
     if (colours[c] === "green") {
       currentTile.classList.add('correct')
     } else if (colours[c] === "yellow") { currentTile.classList.add('present')}
      else {currentTile.classList.add('absent')}
+      word.push(currentTile.innerText)
   }
+  console.log('Current row',currentAttempt)
+  console.log('Current word',word)
+  currentAttempt++
+  letterPosition =0
+  colours =[]
   winConditions ()
 }
 
 // ****************** WINNING CONDITIONS **********************
-
-/*function winConditions (count, attempts) {
-  // Win Condition
-  if (count === COLUMNS) {
-    alert('YOU WIN')
-    gameOver = true
-    return gameOver
-  }
-  // Lose condition
-  if((attempts+1) === ROWS){
-    alert(`The correct word is ${targetWord}`)
-    gameOver = true
-    return gameOver
-  }
-}*/
-
 function winConditions () {
   // Win Condition
   if (gameState) {
@@ -211,6 +197,7 @@ function winConditions () {
     alert(`The correct word is ${targetWord}`)
 }
 
+// ********************** INSTRUCTIONS ***************************8
 
 overlay.addEventListener('click', () => {
   const modals = document.querySelectorAll('.modal.active')
@@ -233,16 +220,3 @@ function closeModal (modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
-// module.exports={
-// gameState: function(){
-//   return gameOver
-// },
-// getAttempts:function(){
-//   return currentAttempt
-// },
-// getBlocks: function(){
-//   return colours
-// }
-// };
-//const result = {gameOver,currentAttempt,colours}
-//module.exports = {gameOver,currentAttempt,colours}

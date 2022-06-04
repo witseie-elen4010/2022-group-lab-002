@@ -18,16 +18,19 @@ gameRouter.post('/guest/api', (req,res)=>{
   const colours=gameDictionary.checkWord(generatedWord,guesseWord)
   const gameState=gameDictionary.winCondition(currentAttempt)
   const isPresent = gameDictionary.isValidWord(guesseWord)
+  const nextAttempt = gameDictionary.getNextAttempt()
   console.log('guessed: ',guesseWord)
   console.log('WordOfDay: ',generatedWord)
-  console.log('Attempts: ',currentAttempt)
+  console.log('From client Attempts: ',currentAttempt)
   console.log(gameState)
   console.log(colours)
   console.log('Server isPresent',isPresent)
+  console.log('Server attempts:',nextAttempt)
   res.json({
   colours,
   gameState,
-  isPresent
+  isPresent,
+  nextAttempt
   })
 })
 

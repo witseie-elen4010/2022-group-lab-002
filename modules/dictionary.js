@@ -12980,6 +12980,7 @@ let colours =[]
 let targetWord=""
 const ROWS = 6
 const COLUMNS = 5
+let nextAttempt =0
 
   module.exports ={ 
     generateWord:function() {
@@ -12993,13 +12994,13 @@ const COLUMNS = 5
     checkWord: function(targetWord, guessedWord){
         correctLetterCount = 0
 
-        for (let c = 0; c < guessedWord.length; c++) {
+        for (let c = 0; c < COLUMNS; c++) {
             const letter = guessedWord[c]
 
             if (targetWord[c] === letter) {colours.push("green")
              correctLetterCount++}
-            if (targetWord.includes(letter)){colours.push("yellow")}
-            if(!(targetWord.includes(letter))){ colours.push("grey")}           
+            else if (targetWord.includes(letter)){colours.push("yellow")}
+            else{ colours.push("grey")}           
         }
         return colours
     },
@@ -13009,7 +13010,13 @@ const COLUMNS = 5
         else return false
     },
     isValidWord: function(guessedWord){
-        if(dictionary.includes(guessedWord.toLowerCase() )) {return true}
-        else{ return false}
+        if(dictionary.includes(guessedWord.toLowerCase() )) {
+            nextAttempt++
+        return true
+    }  else{ return false}
+    },
+    getNextAttempt: function(){
+        colours =[]
+        return nextAttempt
     }
  }
