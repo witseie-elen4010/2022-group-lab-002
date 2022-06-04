@@ -13050,10 +13050,8 @@ function submitGuess (keyEvent) {
         letterPosition = 0
         letterPosition = 0
         attemptedWords.push(guessedWord)
-        console.log(attemptedWords)
-        guessedWord = []
-        colours =[]
-      
+        console.log(colours)
+        guessedWord = []      
       }else{
     alert(`${guessedWord} is invalid. Try again`)
     }
@@ -13110,11 +13108,9 @@ function clickEnter(){
     update()
     currentAttempt++
     letterPosition = 0
-    colours = []
     attemptedWords.push(guessedWord)
-    console.log(attemptedWords)
+    console.log(colours)
     guessedWord = []
-  
   }else{
 alert(`${guessedWord} is invalid. Try again`)
 }
@@ -13194,6 +13190,5 @@ function closeModal (modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
-
 
 module.exports = [gameOver,currentAttempt,colours]
