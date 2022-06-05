@@ -122,7 +122,6 @@ function clickLetter(keyEvent){
 
 function clickEnter(){
   verifyWords()
-  currentAttempt++
 }
 
 function clickDelete(){
