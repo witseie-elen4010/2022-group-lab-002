@@ -12993,13 +12993,14 @@ let nextAttempt =0
     },
     checkWord: function(targetWord, guessedWord){
         correctLetterCount = 0
-
         for (let c = 0; c < COLUMNS; c++) {
             const letter = guessedWord[c]
 
             if (targetWord[c] === letter) {colours.push("green")
              correctLetterCount++}
-            else if (targetWord.includes(letter)){colours.push("yellow")}
+            else if (targetWord.includes(letter)){
+                if(duplicate==1){colours.push("yellow")}}
+                
             else { colours.push("grey")}           
         }
         return colours

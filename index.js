@@ -8,7 +8,7 @@ const mainRouter = require("./routes/mainRouter.js");
 const accountRouter = require("./routes/accountRoutes.js");
 const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
-const gameRouter = require("./routes/game.js");
+const guestRouter = require("./routes/game.js");
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
 const connectDb = require('./database/config/db')
 // const gameDictionary= require('.//modules/dictionary')
@@ -40,7 +40,7 @@ app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter);
 app.use('/gameScores', scoreRouter)
-app.use('/game', gameRouter)
+app.use('/guest', guestRouter)
 app.use('/share',shareScoreRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
