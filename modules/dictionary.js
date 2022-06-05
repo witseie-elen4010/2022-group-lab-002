@@ -12999,8 +12999,7 @@ let nextAttempt =0
             if (targetWord[c] === letter) {colours.push("green")
              correctLetterCount++}
             else if (targetWord.includes(letter)){
-                if(duplicate==1){colours.push("yellow")}}
-                
+               colours.push("yellow")}
             else { colours.push("grey")}           
         }
         return colours

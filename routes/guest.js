@@ -20,7 +20,7 @@ gameRouter.post('/api', (req,res)=>{
   const loseState = gameDictionary.loseCodintion(currentAttempt)
   const isPresent = gameDictionary.isValidWord(guesseWord)
   const nextAttempt = gameDictionary.getNextAttempt(currentAttempt)
-
+console.log('word of the day: ',generatedWord)
   res.json({
   colours,
   winState,
