@@ -3,23 +3,27 @@ GET http://localhost:3000/gameScores/api/scores
 
 ###
 
-GET http://localhost:3000/gameScores/api/scores
+GET http://localhost:3000/gameScores/api/scores/629ba033ca6e5ed4f8f95312
 
 
-####
+###
 
-POST http://localhost:3000/gameScores/api/scores
+POST http://localhost:3000/gameScores/api/create
 Content-Type: application/json
 
 {
-    "_id": "khumalom",
-    "score": 5,
-    "playerTries": {
-        "tryOne": 0,
-        "tryTwo": 0,
-        "tryThree": 0,
-        "tryFour": 0,
-        "tryFive": 0,
-        "trySix": 0
-    }
+    "userID": "kindkhumalo97",
+    "score": 8,
+    "attempts": [ 0, 1, 0, 0, 3, 4 ],
+    "gameOver": false
+}
+
+
+###
+PATCH  http://localhost:3000/gameScores/api/logs/629ba033ca6e5ed4f8f95312
+Content-Type: application/json
+
+{
+    
+    "gameOver": true
 }

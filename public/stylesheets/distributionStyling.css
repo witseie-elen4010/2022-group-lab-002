@@ -1,7 +1,6 @@
 .my-progress {
     width: 60%;
     background-color: white;
-    align-items: center;
     }
     
 .my-bar {
@@ -18,3 +17,28 @@
   
     
   }
+
+.time-remaining {
+    font-weight: bold;
+    margin-top: 10px;
+    float: left;
+}
+
+.share-button {
+    justify-content: right;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    float:right;
+}
+
+#timer {
+    
+    align-content: center;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#score-value {
+    font-weight: bold;
+    font-size: large;
+}
