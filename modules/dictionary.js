@@ -13009,7 +13009,6 @@ let nextAttempt =0
         else return false
     },
     loseCodintion: function (attempt){
-        console.log('From dictionart attemps',attempt)
         if((attempt+1) === ROWS){ return true}
         else return false
     },

@@ -43,7 +43,6 @@ function enterLetter (keyEvent) {
       if (currentTile.innerText === '') {
         currentTile.innerText = keyEvent.code[3]
         letterPosition++
-        console.log("user attempts: ",currentAttempt)
       }
     }
   }
@@ -145,7 +144,6 @@ function verifyWords(){
     },
     body: JSON.stringify(inputObject)
   }
- console.log(inputObject)
   fetch('/game/guest/api', options)
   .then(response => response.json())
   .then(data =>{
@@ -153,14 +151,12 @@ function verifyWords(){
     const winState= data.winState
     const loseState = data.loseState
     const targetWord = data.generatedWord
-    //console.log("GAME OUTCOME verify",gameState)
     const isPresent = data.isPresent
     
     if(isPresent){
       console.log("from server: ",currentAttempt)
     update(colours,winState,loseState,targetWord)
     colours=[]
-    console.log("currentAttempt", currentAttempt)
     letterPosition = 0
     attemptedWords.push(getNewWord()) 
     }else{alert(`${getNewWord()} is invalid. Try again`) }
@@ -171,8 +167,6 @@ function verifyWords(){
 // ****************** CHECK GAME PROGRESS **********************
 function update (colours,winState,loseState,targetWord) {
   correctLetterCount = 0
-  console.log("GAME COLOURS",colours)
-  let word =[]
   for (let c = 0; c < COLUMNS; c++) {
 
     const currentTile = document.getElementById(currentAttempt.toString() + '-' + c.toString())
@@ -181,10 +175,7 @@ function update (colours,winState,loseState,targetWord) {
       currentTile.classList.add('correct')
     } else if (colours[c] === "yellow") { currentTile.classList.add('present')}
      else {currentTile.classList.add('absent')}
-      word.push(currentTile.innerText)
   }
-  console.log('Current row',currentAttempt)
-  console.log('Current word',word)
   currentAttempt++
   letterPosition =0
   colours =[]
@@ -194,11 +185,10 @@ function update (colours,winState,loseState,targetWord) {
 // ****************** WINNING CONDITIONS **********************
 function winConditions (winState,loseState,targetWord) {
   // Win Condition
- console.log("check last row",currentAttempt)
- console.log("lloooseee",loseState)
   if (winState) {
     alert('YOU WIN')
   }
+  // loose condition
   else if(loseState)
     alert(`You loose, ANSWER :${targetWord}`)
 }
