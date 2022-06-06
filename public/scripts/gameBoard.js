@@ -13030,7 +13030,55 @@ function enterLetter (keyEvent) {
     }
   }
 }
+  //* ***********************Loading Sound Effects ****************
+    let mute = false
 
+    function muteAudio () { //Function to mute sound when the mute Icon is pressed
+      mute = true
+    }
+  
+    function unMuteAudio () { //Function to unmute sound when the sound Icon is pressed
+      mute = false
+    }
+    
+      function dropletFxPlay () {
+        const audio = new Audio('/cdn/audioFX/Droplet2.wav')
+        if (mute === false) {
+          audio.play()
+        }
+      }
+    
+      function buzzFxPlay () {
+        audio = new Audio('/cdn/audioFX/Buzzer1.wav')
+    
+        if (mute === false) { audio.play() }
+      }
+    
+      function startGameFxPlay () {
+        audio = new Audio('/cdn/audioFX/90DBM_perc_play.wav')
+    
+        if (mute === false) { audio.play() }
+      }
+    
+      function winGameFxPlay () {
+        audio = new Audio('/cdn/audioFX/CowBell_perc_play.wav')
+    
+        if (mute === false) { audio.play() }
+      }
+    
+      function looserSoundFxPlay () {
+        audio = new Audio('/cdn/audioFX/CryingFx.wav')
+    
+        if (mute === false) { audio.play() }
+      }
+    
+      function lockFxPlay () {
+        audio = new Audio('/cdn/audioFX/LockFx.wav')
+    
+        if (mute === false) { audio.play() }
+      }
+  
+  // ************************** NK ********************************//
 function deleteLetter (keyEvent) {
   if (keyEvent.code === 'Backspace') {
     if (letterPosition > 0 && letterPosition <= COLUMNS) {
@@ -13050,7 +13098,7 @@ function submitGuess (keyEvent) {
         letterPosition = 0
         letterPosition = 0
         guessedWord = []
-      
+       if(currentAttempt < ROWS){ lockFxPlay () }//Sound effect when a word is added
       }else{
     alert(`${guessedWord} is invalid. Try again`)
     }
@@ -13065,6 +13113,7 @@ document.addEventListener('keyup', (keyEvent) => {
   deleteLetter(keyEvent)
   // Press Enter
   submitGuess(keyEvent)
+  dropletFxPlay () //Sound effect when key is pressed
 })
 
   //Virtual keyboard
@@ -13167,12 +13216,14 @@ function winConditions (count, attempts) {
   // Win Condition
   if (count === COLUMNS) {
     alert('YOU WIN')
+    winGameFxPlay() //Winning sound effect
     gameOver = true
     return gameOver
   }
   // Lose condition
   if((attempts+1) === ROWS){
     alert(`The correct word is ${targetWord}`)
+    looserSoundFxPlay() //Looser sound effect
     gameOver = true
     return gameOver
   }
