@@ -9,8 +9,22 @@ const invitation = document.getElementById('invitation')
 const pageUrl = new URL('https://extremewordle.azurewebsites.net')
 
 const gameName = 'Extreme Worlde Game Score Board: '
+//
+fetch('/playerShare/api/shareScore')
+  .then(function (response) {
+    if (response.ok) { return response.json() } // Return the response parse as JSON
+    else { throw 'Failed to load gameScores: response code invalid!' }
+})
+.then(function (data) {
+  const numberOfWins = data.score
+})
+.catch(function (e) { 
+    alert(e) 
+  })
 
-const numberOfWins = 0
+//
+//const numberOfWins = 0
+console.log(numberOfWins) //Can't be viewed because it is in the client side
 const numberOfWinsText = `The Player Won: ${numberOfWins}`
 
 const numberOfTries = 0
