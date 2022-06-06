@@ -3,7 +3,7 @@
 const path = require('path')
 const express = require('express')
 const dictionaryRouter = express.Router()
-const dictionaryData = require("../modules/wordData");
+const dictionaryData = require("../modules/gameData");
 
 dictionaryRouter.get('/', async (req,res)=>{
 

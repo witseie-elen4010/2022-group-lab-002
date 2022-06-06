@@ -3,13 +3,13 @@
 const path = require('path')
 const express = require('express')
 const progress = express.Router()
-const wordSchema = require("../modules/wordData");
-const results = require("../public/scripts/gameBoard")
+const userSchema = require("../modules/gameData");
+const results = require("../routes/accountRoutes")
 
 progress.get('/', async (req,res)=>{
     try{
-       // const users = await gameProgress.find()
-       // res.json(users)
+        const usersData = await userSchema.find()
+        res.json(usersData)
     }
     catch (err){
         res.status(500).json({message: err.message})
@@ -17,12 +17,12 @@ progress.get('/', async (req,res)=>{
 })
 
 progress.post('/',async (req,res)=>{
-    const userProgress = new gameProgress({
-        username: req.body.username,
-        playerTries: results.currentAttempt,
-        playerGameStatus: results.gameOver,
-        playerBlcoks: results.colours
+    const userProgress = new userSchema({
+        playerTries: getData().nextAttempt,
+        playerGameWin: getData().winState,
+        playerBlocks: getData().colours
     })
+    console.log(userProgress)
 
     try{
         const userData = await userProgress.save()
@@ -32,7 +32,15 @@ progress.post('/',async (req,res)=>{
     }
 })
 
-progress.get('/username', async (req,res)=>{
-    const userInfo = await userProgress.find()
-    res.json(userInfo)
+progress.get('/progress/api',async (req,res)=>{
+    const gameInfo = results.primData
+    console.log('data requested is:', gameInfo)
+    try {
+        res.json(gameInfo)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 })
+
+
+module.exports = progress

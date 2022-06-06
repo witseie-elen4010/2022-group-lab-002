@@ -10,8 +10,6 @@ let currentAttempt = 0
 let letterPosition = 0
 let correctLetterCount = 0
 
-let gameOver = false
-
 let colours = []
 let attemptedWords = []
 
@@ -78,7 +76,7 @@ function submitGuess (keyEvent) {
 }
 
 document.addEventListener('keyup', (keyEvent) => {
-  if (gameOver) return
+  if (correctLetterCount==COLUMNS) return
   // Press Letters
   enterLetter(keyEvent)
   // Press Backspace
@@ -96,6 +94,8 @@ function startInteraction () {
 }
 
 function handleMouseClick (e) {
+  if(correctLetterCount==COLUMNS) return
+  
   if (e.target.matches('[data-key]')) {
     clickLetter(e.target.dataset.key)
     return
@@ -143,7 +143,7 @@ function verifyWords(){
     },
     body: JSON.stringify(inputObject)
   }
-  fetch('/game/guest/api', options)
+  fetch('/account/play/api', options)
   .then(response => response.json())
   .then(data =>{
     const colours= data.colours;
@@ -172,6 +172,7 @@ function update (colours,winState,loseState,targetWord) {
     // is the letter in the correct position
     if (colours[c] === "green") {
       currentTile.classList.add('correct')
+      correctLetterCount++
     } else if (colours[c] === "yellow") { currentTile.classList.add('present')}
      else {currentTile.classList.add('absent')}
   }
@@ -186,12 +187,19 @@ function winConditions (winState,loseState,targetWord) {
   // Win Condition
   if (winState) {
     alert('YOU WIN')
+    return true
   }
   // loose condition
-  else if(loseState)
+  else if(loseState){
     alert(`You loose, ANSWER :${targetWord}`)
+    return true}
+    else {return false}
 }
 
+
+function getAttempt(currentAttempt){
+  return currentAttempt1
+}
 // ********************** INSTRUCTIONS ***************************8
 
 overlay.addEventListener('click', () => {

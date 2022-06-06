@@ -1,10 +1,12 @@
-GET  http://localhost:3000/dictionary
+GET  http://localhost:3000/gameProgress
 
 
 ###
-POST   http://localhost:3000/dictionary/api/dictionary
+POST   http://localhost:3000/gameProgress
 Content-Type: application/json
 
 {
-    "dictionary": "APPLE"
+    "playerTries":3,
+    "playerGameWin":false ,
+    "playerBlocks": ["y","y","y","y","gtr"] 
 }

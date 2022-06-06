@@ -9,6 +9,8 @@ const accountRouter = require("./routes/accountRoutes.js");
 const scoreRouter = require('./routes/scoreRoutes')
 const flashMessages = require("./modules/flashMessages");
 const guestRouter = require("./routes/guest.js");
+const gameProgressRouter = require("./routes/gameProgress")
+const dictionaryRouter = require("./routes/dictionaryRouter")
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
 const connectDb = require('./database/config/db')
 // const gameDictionary= require('.//modules/dictionary')
@@ -38,32 +40,15 @@ app.use(
 app.use(flash());
 app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
-app.use("/account", accountRouter);
+app.use("/account", accountRouter.router);
 app.use('/gameScores', scoreRouter)
 app.use('/guest', guestRouter)
 app.use('/share',shareScoreRouter)
+app.use('/gameData',dictionaryRouter)
+app.use('/gameProgress', gameProgressRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/settings",settingsRouter)
-
-// app.post('/api', (res,req)=>{
-//   const isPresent = gameDictionary.isValidWord()
-//   const guesseWord= req.body.guesseWord
-//   const currentAttempt= req.body.currentAttempt
-//  const generatedWord=gameDictionary.getTargetWord()
-// const colours=gameDictionary.checkWord(generatedWord,guesseWord)
-// const gameState=gameDictionary.winCondition(currentAttempt)
-// console.log('guessed: ',guesseWord)
-// console.log('WordOfDay: ',generatedWord)
-// console.log('Attempts: ',currentAttempt)
-// console.log(gameState)
-// console.log(colours)
-//   res.json({
-// colours,
-// gameState,
-// isPresent
-//   })
-// })
 
 const port = process.env.PORT || 3000;
 app.listen(port);
