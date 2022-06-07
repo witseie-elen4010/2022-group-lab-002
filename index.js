@@ -21,7 +21,8 @@ const io = new Server(server)
 // const gameDictionary= require('.//modules/dictionary')
 // loading boadyParser
 const bodyParser = require("body-parser");
-const settingsRouter = require('./routes/settingsRouter.js') 
+const settingsRouter = require('./routes/settingsRouter.js')
+const wordRouter = require('./routes/wordRouter.js') 
 connectDb.connectDb()
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -55,6 +56,7 @@ app.use('/gameProgress', gameProgressRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/settings",settingsRouter)
+app.use("/playerWord", wordRouter)
 
 const port = process.env.PORT || 3000;
 server.listen(port);
