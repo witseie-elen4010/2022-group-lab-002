@@ -55,7 +55,7 @@ router.patch('/api/logs/:id', getPlayer, async (req, res) => {
   try {
     const updatedData = await res.player_.save()
     res.json(updatedData)
-    } catch (err) {
+  } catch (err) {
     res.status(400).json({ message: err.message })
   }
 })

@@ -8,7 +8,7 @@ function timerStart () { timer++ }
 module.exports  = {
     start: function () {
         if(intervals != null){ clearInterval(intervals) }
-        intervals = setInterval(timerStart, 1000)
+        intervals = setInterval(timerStart, 10)
     },
     reset: function () {
         clearInterval(intervals)
