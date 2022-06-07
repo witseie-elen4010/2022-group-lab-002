@@ -13,6 +13,7 @@
 </head>
 <body>
 
+
     <input type="button" id="student" name="student" value="Enter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
 
 <!-- The Modal -->
@@ -39,7 +40,6 @@
                     NEXT WORDLE
                     <% playerScore.forEach(data => { %>
                         <% if(data.gameOver) { %>
-                            <% console.log('It is working') %>
                             <span id="timer"></span>
                         <% } %>
                     <% }) %>

@@ -9,9 +9,7 @@ nodeTemplate.innerHTML = '\n  <div class="guess"></div> \n  <div class="my-progr
 
 button.addEventListener('click', function () {
   scoreDiplay()
-
   scoreDistribution()
-
 }, false)
 
 
