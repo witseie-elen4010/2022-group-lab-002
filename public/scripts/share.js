@@ -27,10 +27,10 @@ fetch('/playerShare/api/shareScore')
 console.log(numberOfWins) // Can't be viewed because it is in the client side
 const numberOfWinsText = `The Player Won: ${numberOfWins}`
 
-const numberOfTries = 0
+const numberOfTries = 0 //Expected to be fetched from the database, board Creater -> Not available Yet
 const numberOfTriesText = `Player's Attempts: ${numberOfTries}`
 
-const totalScore = 0
+const totalScore = 0  //Expected to be fetched from the database, board Creater -> Not available Yet
 const totalScoreText = `Player's Total Score: ${totalScore}`
 
 const invitationMessage = `Hey There!!! Come Try your luck in the Extreme Worlde Game... Can you guess my 5 Letter Word??? \n Link: \n ${pageUrl}`
