@@ -13,11 +13,17 @@ const gameProgressRouter = require("./routes/gameProgress")
 const dictionaryRouter = require("./routes/dictionaryRouter")
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
 const logRouter = require('./routes/logRoutes')
+const multiplayerRouter=require("./routes/multiplayerRouter")
 const connectDb = require('./database/config/db')
+const http=require('http')
+const server=http.createServer(app)
+const {Server, Socket}=require("socket.io");
+const io = new Server(server)
 // const gameDictionary= require('.//modules/dictionary')
 // loading boadyParser
 const bodyParser = require("body-parser");
-const settingsRouter = require('./routes/settingsRouter.js') 
+const settingsRouter = require('./routes/settingsRouter.js')
+const wordRouter = require('./routes/wordRouter.js') 
 connectDb.connectDb()
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -43,19 +49,38 @@ app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter.router);
 app.use('/gameScores', scoreRouter)
-<<<<<<< HEAD
 app.use('/gameLogs', logRouter)
 app.use('/game', gameRouter)
-=======
 app.use('/guest', guestRouter)
->>>>>>> main
 app.use('/share',shareScoreRouter)
+//app.use('/multiplayer',multiplayerRouter)
 app.use('/gameData',dictionaryRouter)
 app.use('/gameProgress', gameProgressRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/settings",settingsRouter)
+app.use("/playerWord", wordRouter)
 
 const port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(port);
 console.log("Express server running on port", port);
+
+//let numberOfMultiPlayers=0
+
+// io.on('connection',(socket) =>{
+  
+//   numberOfMultiPlayers++;
+  
+//   socket.join(Math.round(multiplayerRouter/2))
+//   Socket.emit('roomNumber', roomNumber) //emit this to the client;
+//   console.log('a user connected')
+  
+//   socket.emit('serverToClient', "Hello client");
+//   socket.on('clientToServer', data=>{
+//     console.log(data)
+//   })
+
+//   socket.on('clientToClient', data =>{
+//     socket.broadcast.emit('serverToClient', data);
+//   })
+// })
