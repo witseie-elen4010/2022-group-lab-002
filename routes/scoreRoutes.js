@@ -21,7 +21,6 @@ router.get('/api/scores', async (req, res) => {
   try {
     const playerScore = await gameScore.find()
     console.log(playerScore)
-  
     res.json(playerScore)
   } catch (err) {
     res.status(500).json({ message: err.message })

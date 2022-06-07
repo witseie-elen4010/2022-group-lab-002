@@ -20,6 +20,7 @@ fetch('/gameScores/api/scores') // Returns a Promise for the GET request
   })
   .then(playerScore => {
     playerScore.forEach(data => {
+
       attemptsData = data.attempts
     })
     //attemptsData = playerScore.attempts.slice()
