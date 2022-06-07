@@ -34,7 +34,6 @@ router.get("/single",isAuth,function(req,res){
 router.get("/multi",isAuth, function(req,res){
   // res.redirect()
   res.sendFile(path.join(__dirname, "../views/multiplayer.html")); //this will be directed to the game page
-  
  
  })
 //RESTful api
