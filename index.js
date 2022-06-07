@@ -12,19 +12,19 @@ const guestRouter = require("./routes/guest.js");
 const gameProgressRouter = require("./routes/gameProgress")
 const dictionaryRouter = require("./routes/dictionaryRouter")
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
-const logRouter = require('./routes/logRoutes')
-const ranksRouter = require('./routes/rankRoutes')
 const multiplayerRouter=require("./routes/multiplayerRouter")
 const connectDb = require('./database/config/db')
+const wordRouter = require('./routes/wordRouter.js') 
 const http=require('http')
 const server=http.createServer(app)
 const {Server, Socket}=require("socket.io");
 const io = new Server(server)
+const logRouter = require('./routes/logRoutes')
+const ranksRouter = require('./routes/rankRoutes')
 // const gameDictionary= require('.//modules/dictionary')
 // loading boadyParser
 const bodyParser = require("body-parser");
-const settingsRouter = require('./routes/settingsRouter.js')
-const wordRouter = require('./routes/wordRouter.js') 
+const settingsRouter = require('./routes/settingsRouter.js') 
 connectDb.connectDb()
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -50,13 +50,6 @@ app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter.router);
 app.use('/gameScores', scoreRouter)
-
-app.use('/gameLogs', logRouter)
-app.use('/gameRanks', ranksRouter)
-app.use('/game', gameRouter)
-
-app.use('/gameLogs', logRouter)
-app.use('/game', gameRouter)
 app.use('/guest', guestRouter)
 app.use('/share',shareScoreRouter)
 //app.use('/multiplayer',multiplayerRouter)
@@ -65,8 +58,9 @@ app.use('/gameProgress', gameProgressRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
 
 app.use("/settings",settingsRouter)
+app.use('/gameLogs', logRouter)
+app.use('/gameRanks', ranksRouter)
 app.use("/playerWord", wordRouter)
-
 const port = process.env.PORT || 3000;
 server.listen(port);
 console.log("Express server running on port", port);
