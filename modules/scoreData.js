@@ -1,12 +1,24 @@
 'use strict'
 
-const list = []
+const mongoose = require('mongoose')
 
-  module.exports = {
-    add: function (score) {
-      list.push(score)
+const scoreSchema = mongoose.Schema({
+    userID:{
+        type: String,
+        required: [true, "Include username"]
     },
-    getData: function () {
-      return list
+    score:{
+        type: Number,
+        required: [true, "Include player score"]
+    },
+    attempts:{
+        type: Array,
+        items: { type: Number }
+    },
+    gameOver: {
+        type: Boolean,
+        required: true
     }
-  }
+}) 
+
+module.exports = mongoose.model('gameScores', scoreSchema)

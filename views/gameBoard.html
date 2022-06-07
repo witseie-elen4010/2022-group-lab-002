@@ -7,12 +7,20 @@
     <title>Extreme Wordle</title>
     <link rel="stylesheet" href="/cdn/css/gameBoard.css">
     <link rel="stylesheet" href="/cdn/css/instructions.css">
+    <script src="/cdn/scripts/indexScore.js" defer></script>
+    <script src="/cdn/scripts/timer.js" defer></script>
 
  </head>
  <body>
     <h1>Wordle</h1>
    <form action="api/logout" method="post">
    <button>Logout </button>
+   </form>
+
+   <a data-bs-toggle="modal" href="../gameScores/score" data-bs-target="#myModal">
+      <input type="button" id='finButton' name="finButton" value="Score" class="btn btn-primary">
+   </a>
+
 </form>
    <!--Adding sound Effects Buttons--> 
    <div>
@@ -96,6 +104,12 @@
 
    </div> 
    <div id="overlay"></div>
+   <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
 
  </body>
  <script src="/cdn/scripts/gameBoard.js"></script>

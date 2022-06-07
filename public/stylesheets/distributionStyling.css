@@ -1,16 +1,44 @@
-.myProgress {
+.my-progress {
     width: 60%;
     background-color: white;
     }
     
-  .myBar {
-      width: 10%;
-      height: 20px;
-      background-color: #04AA6D;
-      text-align: right;
-      line-height: 20px;
-      color: white;
-      display: flex;
-      font-weight: bold;
-      color: var(--tile-text-color);
-    }
+.my-bar {
+    width: 10%;
+    height: 20px;
+    background-color: #04AA6D;
+    text-align: right;
+    line-height: 20px;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    margin-top: 5px;
+    justify-content: right;
+    
+    
+  }
+
+.time-remaining {
+    font-weight: bold;
+    margin-top: 10px;
+    float: left;
+}
+
+.share-button {
+    justify-content: right;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    float:right;
+}
+
+#timer {
+    
+    align-content: center;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#score-value {
+    font-weight: bold;
+    font-size: large;
+}
