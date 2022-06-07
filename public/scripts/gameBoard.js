@@ -45,6 +45,9 @@ function enterLetter (keyEvent) {
     }
   }
 }
+  //* ***********************Loading Sound Effects ****************
+    let mute = false
+
 
 function getNewWord(){
   let newWord =''
@@ -58,8 +61,53 @@ function getNewWord(){
 
   return newWord
 }
-
-function deleteLetter (keyEvent, getNewWord) {
+ function muteAudio () { //Function to mute sound when the mute Icon is pressed
+      mute = true
+ }
+  
+function unMuteAudio () { //Function to unmute sound when the sound Icon is pressed
+      mute = false
+ }
+    
+function dropletFxPlay () {
+        const audio = new Audio('/cdn/audioFX/Droplet2.wav')
+        if (mute === false) {
+          audio.play()
+        }
+ }
+    
+function buzzFxPlay () {
+        audio = new Audio('/cdn/audioFX/Buzzer1.wav')
+    
+        if (mute === false) { audio.play() }
+ }
+   
+function startGameFxPlay () {
+        audio = new Audio('/cdn/audioFX/90DBM_perc_play.wav')
+    
+        if (mute === false) { audio.play() }
+}
+    
+      function winGameFxPlay () {
+        audio = new Audio('/cdn/audioFX/CowBell_perc_play.wav')
+    
+        if (mute === false) { audio.play() }
+}
+    
+      function looserSoundFxPlay () {
+        audio = new Audio('/cdn/audioFX/CryingFx.wav')
+    
+        if (mute === false) { audio.play() }
+}
+    
+      function lockFxPlay () {
+        audio = new Audio('/cdn/audioFX/LockFx.wav')
+    
+        if (mute === false) { audio.play() }
+ }
+  
+  // ************************** NK ********************************//
+function deleteLetter (keyEvent) {
   if (keyEvent.code === 'Backspace') {
     if (letterPosition > 0 && letterPosition <= COLUMNS) {
       letterPosition -= 1
@@ -71,8 +119,7 @@ function deleteLetter (keyEvent, getNewWord) {
 
 function submitGuess (keyEvent) {
   if (keyEvent.code === 'Enter') {
-    verifyWords()
-  }
+    verifyWords()}
 }
 
 document.addEventListener('keyup', (keyEvent) => {
@@ -83,6 +130,7 @@ document.addEventListener('keyup', (keyEvent) => {
   deleteLetter(keyEvent)
   // Press Enter
   submitGuess(keyEvent)
+  dropletFxPlay () //Sound effect when key is pressed
 })
 
   //Virtual keyboard
@@ -158,6 +206,8 @@ function verifyWords(){
     colours=[]
     letterPosition = 0
     attemptedWords.push(getNewWord()) 
+     
+    if(currentAttempt < ROWS){ lockFxPlay () }//Sound effect when a word is added
     }else{alert(`${getNewWord()} is invalid. Try again`) }
 
    })
@@ -187,11 +237,13 @@ function winConditions (winState,loseState,targetWord) {
   // Win Condition
   if (winState) {
     alert('YOU WIN')
+    inGameFxPlay() //Winning sound effect
     return true
   }
   // loose condition
   else if(loseState){
     alert(`You loose, ANSWER :${targetWord}`)
+    looserSoundFxPlay() //Looser sound effect
     return true}
     else {return false}
 }
