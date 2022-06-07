@@ -14,17 +14,17 @@ fetch('/playerShare/api/shareScore')
   .then(function (response) {
     if (response.ok) { return response.json() } // Return the response parse as JSON
     else { throw 'Failed to load gameScores: response code invalid!' }
-})
-.then(function (data) {
-  const numberOfWins = data.score
-})
-.catch(function (e) { 
-    alert(e) 
+  })
+  .then(function (data) {
+    const numberOfWins = data.score
+  })
+  .catch(function (e) {
+    alert(e)
   })
 
 //
-//const numberOfWins = 0
-console.log(numberOfWins) //Can't be viewed because it is in the client side
+// const numberOfWins = 0
+console.log(numberOfWins) // Can't be viewed because it is in the client side
 const numberOfWinsText = `The Player Won: ${numberOfWins}`
 
 const numberOfTries = 0
@@ -37,16 +37,15 @@ const invitationMessage = `Hey There!!! Come Try your luck in the Extreme Worlde
 const scoreBoard = ` ${gameName} \n ${numberOfWinsText} \n ${numberOfTriesText} \n ${totalScoreText} \n Link: \n ${pageUrl}`
 let message = scoreBoard
 
-invitation.addEventListener('click', () =>{
+invitation.addEventListener('click', () => {
   console.log('invitation button clicked')
   message = invitationMessage
 })
 
-showScore.addEventListener('click', () =>{
+showScore.addEventListener('click', () => {
   console.log('showScore button clicked')
   message = scoreBoard
 })
-
 
 telegram.addEventListener('click', () => {
   console.log('twitter button clicked')
