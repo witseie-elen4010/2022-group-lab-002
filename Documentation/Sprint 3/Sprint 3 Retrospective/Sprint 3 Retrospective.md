@@ -34,4 +34,4 @@
 * Not doing a story in a release, you letting the team down
 
 ## Sprint velocity
-*  stories closed
+* 9 stories closed
