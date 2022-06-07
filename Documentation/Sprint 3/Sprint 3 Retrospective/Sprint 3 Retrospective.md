@@ -1,9 +1,13 @@
 # SPRINT THREE RESTROSPECTIVE - Project Review 
 
+* This project did not go as planned, only few core functionality was implemented 
+* This was mainly due to members not participating fairly to the project, not willingness to learn important concepts
+* The following paragraphs is the introspetive of the group progress
+
 ## Future improvemets 
 * Test every story after completion
 * Improve skills and knowledge on MongoDB and express
-* Push regulalry to the remote repo to avaid merge conflicts 
+* Push regulalry to the remote repo to avoid merge conflicts 
 * Link necceary codes as soon as possible and as often as possible
 
 ## Start doing
@@ -30,4 +34,4 @@
 * Not doing a story in a release, you letting the team down
 
 ## Sprint velocity
-* 10 stories closed
+*  stories closed
