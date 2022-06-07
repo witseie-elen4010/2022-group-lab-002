@@ -5,7 +5,7 @@ Date: 2022-May-19
 Accepted
 
 ## Context
-Each and everfy user story has its own schema which was not linked.
+Each and every user story has its own schema which was not linked.
 
 
 ## Decision
