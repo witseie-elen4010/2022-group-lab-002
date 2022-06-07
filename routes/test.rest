@@ -1,0 +1,11 @@
+GET http://127.0.0.1:3000/playerShare/api/shareScore
+
+###
+
+POST http://127.0.0.1:3000/playerShare/api/shareScore
+Content-Type: application/json
+
+{
+    "username": "NDEME",
+    "score": 2
+}

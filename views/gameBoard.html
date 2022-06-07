@@ -20,8 +20,15 @@
    <a data-bs-toggle="modal" href="../gameScores/score" data-bs-target="#myModal">
       <input type="button" id='finButton' name="finButton" value="Score" class="btn btn-primary">
    </a>
-   <hr>
-   <br>
+
+</form>
+   <!--Adding sound Effects Buttons--> 
+   <div>
+   <button onclick="muteAudio()" >&#128226</button>
+   <button onclick="unMuteAudio()" >&#128263</button>
+   </div>
+    <hr>
+    <br>
     
     <div data-guess-grid id="board"></div>
 
@@ -49,7 +56,7 @@
     <button class="key" data-key="L"> L</button>
    
     <div class="space"></div>
-    <button data-enter class="key"> Ent</button>
+    <div type="button" data-enter class="key" > Ent</div>
 
     <button class="key" data-key="Z"> Z</button>
     <button class="key" data-key="X"> X</button>
