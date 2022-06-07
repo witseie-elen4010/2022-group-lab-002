@@ -12,6 +12,33 @@
     color: white;
     display: flex;
     font-weight: bold;
-    color: var(--tile-text-color);
+    margin-top: 5px;
+    justify-content: right;
+    
     
   }
+
+.time-remaining {
+    font-weight: bold;
+    margin-top: 10px;
+    float: left;
+}
+
+.share-button {
+    justify-content: right;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    float:right;
+}
+
+#timer {
+    
+    align-content: center;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#score-value {
+    font-weight: bold;
+    font-size: large;
+}

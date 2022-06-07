@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+
+    <link rel="stylesheet" href="../public/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+    <body>
+    <div class="hideChatBox">
+        <button id="chat-button" type="button" class="hider">Extreme Worlde Game Developer Site!
+            <i id="chatEmojis" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+        <div class="content">
+        <div class="showChatBox">
+        <div class="outerCaseBoundary">
+        <div class="chatCasing">
+        <div id="chatbox">
+        <h4 id="chatTimeStamp"></h4>
+        <p id="botStarterMessage" class="respondText"><span>Loading...</span></p>
+        </div>
+
+        <div class="chatInputSpace">
+        <div id="userInput">
+        <input id="textInput" class="inputBox" type="text" name="Message"
+        placeholder="Type Message Here...">
+        <p></p>
+        </div>
+
+        <div class="emojisInBar">
+        <i id="chatEmojis" class="fa fa-fw fa-thumbs-up"
+        onclick="thumbsUp()"></i>
+        <i id="chatEmojis" class="fa fa-fw fa-thumbs-down"
+        onclick="thumbsDown()"></i>
+        <i id="chatEmojis" class="fa fa-fw fa-send"
+        onclick="sendButton()"></i>
+        </div>
+        </div>
+
+        <div id="bottomChatBar">
+        <p></p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../public/scripts/chat.js"></script>
+
+</html>

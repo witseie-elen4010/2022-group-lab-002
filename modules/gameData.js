@@ -3,16 +3,12 @@
 const { Timestamp } = require('mongodb')
 const mongoose = require('mongoose')
 
-const userSchema = mongoose.Schema({
-    username:{
-        type: String,
-        required: [true, "Include username"]
-    },
+const userSchema = new mongoose.Schema({
     playerTries:{
         type: Number,
         required: [true, "Include Player tries"]
     },
-    playerGameStatus:{
+    playerGameWin:{
         type: Boolean,
         required: [true, "Include Player game status"]
     },
@@ -24,4 +20,4 @@ const userSchema = mongoose.Schema({
     {timestamp: true}
 ) 
 
-module.exports = mongoose.model('gameProgress',userSchema)
+module.exports = mongoose.model('gameDataSchema',userSchema)
