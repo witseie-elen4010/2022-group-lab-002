@@ -15,9 +15,15 @@ const scoreSchema = mongoose.Schema({
         type: Array,
         items: { type: Number }
     },
+<<<<<<< HEAD
+    gameOver: { 
+        type: Boolean,
+        required: true 
+=======
     gameOver: {
         type: Boolean,
         required: true
+>>>>>>> main
     }
 }) 
 
