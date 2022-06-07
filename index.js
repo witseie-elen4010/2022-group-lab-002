@@ -12,7 +12,12 @@ const guestRouter = require("./routes/guest.js");
 const gameProgressRouter = require("./routes/gameProgress")
 const dictionaryRouter = require("./routes/dictionaryRouter")
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
+const multiplayerRouter=require("./routes/multiplayerRouter")
 const connectDb = require('./database/config/db')
+const http=require('http')
+const server=http.createServer(app)
+const {Server, Socket}=require("socket.io");
+const io = new Server(server)
 // const gameDictionary= require('.//modules/dictionary')
 // loading boadyParser
 const bodyParser = require("body-parser");
@@ -44,6 +49,7 @@ app.use("/account", accountRouter.router);
 app.use('/gameScores', scoreRouter)
 app.use('/guest', guestRouter)
 app.use('/share',shareScoreRouter)
+//app.use('/multiplayer',multiplayerRouter)
 app.use('/gameData',dictionaryRouter)
 app.use('/gameProgress', gameProgressRouter)
 app.use("/cdn", express.static("public")); // mounts the public directory to /cdn
@@ -51,5 +57,25 @@ app.use("/cdn", express.static("public")); // mounts the public directory to /cd
 app.use("/settings",settingsRouter)
 
 const port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(port);
 console.log("Express server running on port", port);
+
+//let numberOfMultiPlayers=0
+
+// io.on('connection',(socket) =>{
+  
+//   numberOfMultiPlayers++;
+  
+//   socket.join(Math.round(multiplayerRouter/2))
+//   Socket.emit('roomNumber', roomNumber) //emit this to the client;
+//   console.log('a user connected')
+  
+//   socket.emit('serverToClient', "Hello client");
+//   socket.on('clientToServer', data=>{
+//     console.log(data)
+//   })
+
+//   socket.on('clientToClient', data =>{
+//     socket.broadcast.emit('serverToClient', data);
+//   })
+// })

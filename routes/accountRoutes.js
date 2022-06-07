@@ -25,12 +25,20 @@ router.get("/login", function (req, res) {
 });
 
 
-router.get("/play", isAuth,function(req,res){
+router.get("/mode", isAuth,function(req,res){
+  res.sendFile(path.join(__dirname, "../views/gameMode.html")); //this will be directed to the game page
+})
+router.get("/single",isAuth,function(req,res){
   res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
   gameDictionary.generateWord()
 
 })
 
+router.get("/multi",isAuth, function(req,res){
+  // res.redirect()
+  res.sendFile(path.join(__dirname, "../views/multiplayer.html")); //this will be directed to the game page
+ 
+ })
 //RESTful api
 
 router.get("/api/info", function (req, res) {
@@ -61,11 +69,9 @@ else{
     password: hashedPassword,
   });
   if (player) {
-    console.log({
-      _id: players.id,
-      username: players.username,
-      email: players.email,
-    });
+    console.log(
+players
+    );
 
     req.flash("success", "Registration successful, Login to your account");
     res.redirect(req.baseUrl + "/login");
@@ -90,7 +96,7 @@ router.post("/api/login", async function (req, res) {
     if (pass) {
       req.flash("success", "Login successful");
       req.session.isAuth=true
-      res.redirect(req.baseUrl+"/play")
+      res.redirect(req.baseUrl+"/mode")
     } else {
       req.flash("error", "password does not match");
       res.redirect(req.baseUrl + "/login");
@@ -101,11 +107,11 @@ router.post("/api/login", async function (req, res) {
     res.redirect(req.baseUrl + "/register");
   }
 });
-router.post("/api/logout",function(req,res){
+router.post("/logout",function(req,res){
   req.session.destroy((err)=>{
     if(err) throw err;
     else{
-      res.redirect("/")
+      res.redirect( "/")
     }
 
   });

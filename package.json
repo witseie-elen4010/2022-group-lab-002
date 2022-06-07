@@ -30,7 +30,8 @@
     "express-session": "^1.17.3",
     "jsdom": "^19.0.0",
     "mongodb": "^4.6.0",
-    "mongoose": "^6.3.5"
+    "mongoose": "^6.3.5",
+    "socket.io": "^4.5.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
