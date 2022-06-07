@@ -13,7 +13,12 @@
     <h1>Wordle</h1>
    <form action="/account/logout" method="POST"> 
    <button>Logout </button>
-   </form>
+</form>
+   <!--Adding sound Effects Buttons--> 
+   <div>
+   <button onclick="muteAudio()" >&#128226</button>
+   <button onclick="unMuteAudio()" >&#128263</button>
+   </div>
     <hr>
     <br>
     
@@ -43,7 +48,7 @@
     <button class="key" data-key="L"> L</button>
    
     <div class="space"></div>
-    <button data-enter class="key"> Ent</button>
+    <div type="button" data-enter class="key" > Ent</div>
 
     <button class="key" data-key="Z"> Z</button>
     <button class="key" data-key="X"> X</button>

@@ -1,4 +1,5 @@
 "use strict";
+const gameDictionary= require('../modules/dictionary')
 const path = require("path");
 const express = require("express");
 const router = express.Router();
@@ -6,6 +7,7 @@ const userData = require("../modules/accountData.js");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const players = require("../modules/players");
+let  primData
 const isAuth =(req, res,next)=>{
   if(req.session.isAuth){
     next()
@@ -28,6 +30,7 @@ router.get("/mode", isAuth,function(req,res){
 })
 router.get("/single",isAuth,function(req,res){
   res.sendFile(path.join(__dirname, "../views/gameBoard.html")); //this will be directed to the game page
+  gameDictionary.generateWord()
 
 })
 
@@ -113,4 +116,44 @@ router.post("/logout",function(req,res){
 
   });
 });
-module.exports = router;
+router.post('/play/api', (req,res)=>{
+  const guesseWord=req.body.getNewWord
+  const currentAttempt=req.body.currentAttempt
+  
+  const generatedWord=gameDictionary.getTargetWord()
+  const colours=gameDictionary.checkWord(generatedWord,guesseWord)
+  const winState =gameDictionary.winCondition()
+  const loseState = gameDictionary.loseCodintion(currentAttempt)
+  const isPresent = gameDictionary.isValidWord(guesseWord)
+  const nextAttempt = gameDictionary.getNextAttempt(currentAttempt)
+  console.log('word of the day for registered player: ',generatedWord)
+  
+  res.json({
+  colours,
+  winState,
+  loseState,
+  isPresent,
+  nextAttempt,
+  generatedWord
+  })
+})
+
+router.post('/progress/api', (req,res)=>{
+  const guesseWord=req.body.getNewWord
+  const currentAttempt=req.body.currentAttempt
+  
+  
+  const generatedWord=gameDictionary.getTargetWord()
+  const colours=gameDictionary.checkWord(generatedWord,guesseWord)
+  const winState =gameDictionary.winCondition()
+  const nextAttempt = gameDictionary.getNextAttempt(currentAttempt)
+  primData ={
+  nextAttempt,
+  winState ,
+  colours
+}
+  console.log('Data to be sent', primData)
+  res.send(primData)
+})
+
+module.exports ={ router,primData}
