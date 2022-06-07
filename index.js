@@ -12,6 +12,7 @@ const guestRouter = require("./routes/guest.js");
 const gameProgressRouter = require("./routes/gameProgress")
 const dictionaryRouter = require("./routes/dictionaryRouter")
 const shareScoreRouter=require("./routes/shareScoreRouter.js")
+const logRouter = require('./routes/logRoutes')
 const multiplayerRouter=require("./routes/multiplayerRouter")
 const connectDb = require('./database/config/db')
 const http=require('http')
@@ -48,6 +49,8 @@ app.use(flashMessages.flashMessage);
 app.use("/", mainRouter);
 app.use("/account", accountRouter.router);
 app.use('/gameScores', scoreRouter)
+app.use('/gameLogs', logRouter)
+app.use('/game', gameRouter)
 app.use('/guest', guestRouter)
 app.use('/share',shareScoreRouter)
 //app.use('/multiplayer',multiplayerRouter)
